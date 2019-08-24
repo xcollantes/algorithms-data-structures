@@ -1,4 +1,4 @@
-# algorithms-data-structures
+# Algorithms and Data Structures
 Practice code for interviews and most used algorithms.  
 
 ## Reference
