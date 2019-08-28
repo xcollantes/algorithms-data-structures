@@ -41,19 +41,19 @@ class BinaryTree:
     self.root = data
 
 
-  def InsertLeft(self, newNode):
-    if self.GetLeft() == None:
-      self.left = BinaryTree(newNode)
+  def InsertLeft(self, data):
+    if self.left == None:
+      self.left = BinaryTree(data)
     else:
-      t = BinaryTree(newNode)
-      t.SetLeft(self.GetLeft())
+      t = BinaryTree(data)
+      t.left = self.left
       self.left = t
 
 
   def InsertRight(self, data):
-    if self.GetRight() == None:
-      self.SetRight(BinaryTree(data))
+    if self.right == None:
+      self.right = BinaryTree(data)
     else:
       t = BinaryTree(data)
-      t.SetRight(self.GetRight())
-      self.SetRight(t)
+      t.right = self.right
+      self.right = t

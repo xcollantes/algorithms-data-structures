@@ -8,12 +8,16 @@ def main():
   tree.InsertLeft('a')
   tree.InsertRight('b')
 
-  print('root: ', tree.GetRoot())
+  print(tree.GetRoot())
   print('left: ', tree.GetLeft())
   print('right: ', tree.GetRight())
 
-  #TreeChapters()
+  TreeChapters()
 
+#  my_tree = BinaryTree('seed')
+#  my_tree.InsertLeft('leftSeed')
+#  my_tree.InsertRight('rightSeed')
+#  print(my_tree.GetRoot())
 
 def TreeChapters():
   """Initalizes a b-tree with data as book chapters, sub-chapters, etc.
