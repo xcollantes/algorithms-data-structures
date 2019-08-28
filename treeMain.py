@@ -9,8 +9,8 @@ def main():
   tree.InsertRight('b')
 
   print(tree.GetRoot())
-  print('left: ', tree.GetLeft())
-  print('right: ', tree.GetRight())
+  print('left: ', tree.GetLeft().GetRoot())
+  print('right: ', tree.GetRight().GetRoot())
 
   TreeChapters()
 
