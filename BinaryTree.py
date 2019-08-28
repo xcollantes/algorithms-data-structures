@@ -1,4 +1,6 @@
-# Trees Practice
+"""Binary Trees Practice.
+"""
+
 
 __author__ = 'Xavier Collantes'
 

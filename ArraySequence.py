@@ -1,5 +1,8 @@
+"""Array Sequence Practice
+"""
 
-# Array Sequence Practice
+
+__author__ = 'Xavier Collantes'
 
 
 def main():

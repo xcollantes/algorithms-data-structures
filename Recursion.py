@@ -1,5 +1,5 @@
-
-# Recursion Practice
+"""Recursion Practice
+"""
 
 __author__ = 'Xavier Collantes'
 
