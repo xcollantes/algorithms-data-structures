@@ -1,4 +1,6 @@
-# Stack Implementation
+"""Stack Implementation
+"""
+
 
 __author__ = 'Xavier Collantes'
 
