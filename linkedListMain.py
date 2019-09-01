@@ -28,6 +28,80 @@ def main():
 
   # Check if linked list is circular.
   print('CIR? %s' % is_circular(list_cir))
+  print('TO REVERSE: ')
+  p(list_head)
+  print('IN REVERSE: ')
+  p(Reverse(list_head))
+
+  print('Nth to the Last')
+  print(NthToLast(15, list_head))
+
+
+def Reverse(in_head):
+  """Reverse a linked list given a head.
+  Waaaay better answer that keeps fixed space.
+  """
+  head = copy.deepcopy(in_head)
+  current = head
+  prev = None
+  next = None
+
+  while current:
+    next = current.next
+    current.next = prev
+
+    prev = current
+    current = next
+
+  return prev
+
+
+def NthToLast(n, head):
+  """Return the nth to last node value.
+
+  n: Nth to last node.
+  head: First node of linked list.
+
+  Return: Contents of last to Nth node.
+  """
+  current = head
+  scout = current
+
+  for i in range(n - 1):
+    if scout.next == None:
+      return scout.data
+    else:
+      scout = scout.next
+
+  while scout.next:
+    current = current.next
+    scout = scout.next
+
+  return current.data
+
+
+def reverseBad(head):
+  """Reverse a linked list given a head.
+  Sub-par answer since this creates an intermediary linked
+  list.
+  """
+  if head.data:
+    out_list = Node(head.data)
+  else:
+    return 'Error'
+
+  hptr = head
+  optr = out_list
+  print('head: ', head)
+  print('olist: ', out_list)
+  while hptr.next:
+    temp_node = Node(hptr.next.data)
+    temp_node.next = optr
+
+    optr = temp_node
+    hptr = hptr.next
+  print('optr: ', optr)
+  return optr
 
 
 def is_circular(in_head):
