@@ -5,14 +5,14 @@
 __author__ = 'Xavier Collantes'
 
 class BinaryTree:
-  def __init__(self, root):
-    self.root = root
+  def __init__(self, data):
+    self.data = data
     self.left = None
     self.right = None
 
 
   def PreOrder(self):
-      print(self.root, '->', end=" ")
+      print(self.data, '->', end=" ")
       if self.GetLeft():
         self.GetLeft().PreOrder()
       if self.GetRight():
@@ -28,19 +28,19 @@ class BinaryTree:
 
 
   def SetRight(self, data):
-    self.root = data
+    self.data = data
 
 
   def SetLeft(self, data):
-    self.root = data
+    self.data = data
 
 
-  def GetRoot(self):
-    return self.root
+  def GetData(self):
+    return self.data
 
 
-  def SetRoot(self, data):
-    self.root = data
+  def SetData(self, data):
+    self.data = data
 
 
   def InsertLeft(self, data):

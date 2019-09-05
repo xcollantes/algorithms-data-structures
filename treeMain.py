@@ -4,13 +4,13 @@
 from BinaryTree import BinaryTree
 
 def main():
-  tree = BinaryTree('zero')
-  tree.InsertLeft('a')
-  tree.InsertRight('b')
+  root = BinaryTree('zero')
+  root.InsertLeft('a')
+  root.InsertRight('b')
 
-  print(tree.GetRoot())
-  print(tree.GetRoot(), ': left: ', tree.GetLeft().GetRoot())
-  print(tree.GetRoot(), ': right: ', tree.GetRight().GetRoot())
+  print(root.GetData())
+  print(root.GetData(), ': left: ', root.GetLeft().GetData())
+  print(root.GetData(), ': right: ', root.GetRight().GetData())
 
   TreeChapters()
 
@@ -28,7 +28,7 @@ def TreeChapters():
 
   for c in chapters[1:]:
     temp_book = BinaryTree(c)
-    if c < book.GetRoot():
+    if c < book.GetData():
       book.InsertLeft(c)
     else:
       book.InsertRight(c)
