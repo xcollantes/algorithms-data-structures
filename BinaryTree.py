@@ -1,8 +1,7 @@
 """Binary Trees Practice.
 """
-
-
 __author__ = 'Xavier Collantes'
+
 
 class BinaryTree:
   def __init__(self, data):
@@ -10,6 +9,9 @@ class BinaryTree:
     self.left = None
     self.right = None
 
+
+  def put(self, key):
+    if 
 
   def PreOrder(self):
       print(self.data, '->', end=" ")
