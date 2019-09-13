@@ -8,26 +8,26 @@ def main():
   print(BinarySearchIter(x, 1000))
 
   print('Binary Search Recursive')
-  print(BinarySearchRec(x, 78))
+  print(BinarySearchRec(x, 1000))
 
 
 def BinarySearchRec(list: List[int], element: int) -> bool:
   first = 0
   last = len(list)
-  print(list)
+  #print(list)
   mid = (first + last) // 2
 
   #print('MID: ', list[mid], ' ', list)
   print('MID: ', mid, ' ', list)
-  if list[mid] == element or (len(list) == 1 and list[mid] == element):
-    return True
 
+  if len(list) == 0:
+    return False
+  if list[mid] == element:
+    return True
   if list[mid] > element:
     return BinarySearchRec(list[first:mid - 1], element)
   if list[mid] < element:
     return BinarySearchRec(list[mid + 1:last], element)
-  else:
-    return False
 
 
 def BinarySearchIter(list: List[int], element: int) -> bool:
