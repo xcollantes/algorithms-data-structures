@@ -19,12 +19,15 @@ def main():
   table.Put(34, 'shwiffty')
   logging.info(table.slot_key)
 
-
   table.Put(33, 'rick')
   logging.info(table.slot_key)
 
   table.Put(33, 'morty')
   logging.info(table.slot_key)
+
+  table.Put(33, 'morty')
+  logging.info(table.slot_key)
+
 
 
 class HashTable:
@@ -48,7 +51,14 @@ class HashTable:
       self.slot_data[remainder_key_hash] = data
     else:
       logging.debug(f'Collision: Rehashing key {key}')
-      self.Put(self.rehash(remainder_key_hash), data)
+      next_slot = self.rehash(remainder_key_hash)
+
+      while self.slot_key[next_slot] is not None and self.slot_key[next_slot] is not key:
+        next_slot = self.rehash(next_slot)
+
+      if self.slot_key[next_slot] == None:
+        self.slot_key[next_slot] = key
+        self.slot_data[next_slot] = data 
 
 
     print('\n')
