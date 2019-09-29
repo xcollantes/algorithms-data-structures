@@ -4,13 +4,15 @@ from typing import List
 
 
 def main():
-  list = [3,7,2,9,23,43,0,3,8]
+  list = [5,8,2,3,1,9]
   
   print(f'LIST: {list}')
   print(f'SORT: {mergeSort(list)}')
+
   
-  
-def mergeSort(arr) -> List[int]:
+def mergeSort(arr: List[int]) -> List[int]:
+  print(f'MergeTop: {arr}')
+
   if len(arr) > 1:
     mid = len(arr) // 2
 	
@@ -22,26 +24,30 @@ def mergeSort(arr) -> List[int]:
 
     posL = 0
     posR = 0
-    result = []
+    r = 0
 
-  while posL < len(left) and posR < len(right):
-    if left[posL] < right[posR]:
-      result.append(left[posL])
+    while posL < len(left) and posR < len(right):
+      if left[posL] < right[posR]:
+        arr[r] = left[posL]
+        posL += 1
+      else:
+        arr[r] = right[posR]
+        posR += 1
+  
+      r += 1
+        
+    while posL < len(left):
+      arr[r] = left[posL]
+      r += 1
       posL += 1
-    else:
-      result.append(right[posR])
+  	  
+    while posR < len(right):
+      arr[r] = right[posR]
+      r += 1
       posR += 1
-      
-  while posL < left[posL]:
-    result.append(left[posL])
-    posL += 1
-	  
-  while posR < right[posR]:
-    result.append(right[posR])
-    posR += 1
-	  
-  return result
-
+  	  
+    print(f'MERGING: {arr}')
+  
 
 if __name__ == '__main__':
   main()
