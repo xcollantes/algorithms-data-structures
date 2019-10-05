@@ -1,34 +1,29 @@
+"""Selection Sort"""
 
-import random
+from typing import List
+
+
 
 def main():
-  list = [random.randint(-10, 10) for _ in range(10)]
-  print(list)
-
-  m = len(list) - 1
-  pos = 0
-
-  while m > 0:
-    print(f'PRE: {list}')
-
-    n = 1
-    currMax = list[0]
-    for e in range(m):
-
-      print(list[e])
-      if list[e] > currMax:
-        temp = currMax
-        currMax = list[e]
-        list[e] = temp
-
-    list[m] = currMax
-    print(f'MAX: {list[m]}')
-    m -= 1
-
-    print(f'POST: {list}')
-  print(list)
+  A = [3,1,9,0,3,1,2]
+  print(f'{A} of length {len(A)}')
+  print(SelectionSort(A))
 
 
+def SelectionSort(arr: List[int]) -> List[int]:
+  minIndex = 0
 
-if __name__ == '__main__':
+  for e in range(len(arr)):
+    for x in range(e + 1, len(arr)):
+      print(f'starting at pos: {x}')
+      if arr[minIndex] > arr[x]:
+        minIndex = x
+
+    print(f'For index:{e} found min at index: {arr[minIndex]}')
+
+    arr[e], arr[minIndex] = arr[minIndex], arr[e]
+    print(f'{arr} of length: {len(arr)}\n')
+  return arr
+
+if __name__=='__main__':
   main()
