@@ -3,27 +3,27 @@
 import unittest
 from typing import List
 
-class Permute:
-  def __init__(self):
-    pass
 
-  def perm(text: str) -> List[str]:
-    
+def perm(text: str) -> List[str]:
+  out = []
+  if len(text) == 0:
+    out = [text]
+  else:
+    for i,letter in enumerate(text):
+      print(f'ENUM: {i} {letter}')
+      for permy in perm(text[:i] + text[i + 1:]):
+
+        out += [letter + permy]
+        #print(f'i: {i}  letter: {letter}')
+  print(f'{out}\n')
+  return out
 
 
-
-
-class PermuteTest(unittest.TestCase):
-
-  @unittest.skip('Setup not')
-  def setUp(self):
-    self.s = 'abcde'
-    self.p = Permute()
-
-  def allPerms(self):
-    result = ['']
-    assertEqual(Permute.perm(), result)
+def main():
+  s = 'abc'
+  print(perm(s))
 
 
 if __name__=='__main__':
-  unittest.main()
+  #unittest.main()
+  main()
