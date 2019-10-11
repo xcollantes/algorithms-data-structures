@@ -2,14 +2,11 @@
 from typing import List
 
 def main():
-  print(fib_rec(6))
-  print(fib_iter(6))
+  print(fib_rec(10))
+  print(fib_iter(10))
 
 def fib_memo(n: int) -> int:
-
-
-
-
+  pass
 
 
 def fib_iter(n: int) -> int:

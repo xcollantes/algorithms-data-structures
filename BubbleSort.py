@@ -19,7 +19,7 @@ def main():
         data[index + 1] = temp
 
         finish = 0  # Restart indices with good match
-      
+
       index += 1
 
     else:

@@ -15,10 +15,10 @@ def mergeSort(arr: List[int]) -> List[int]:
 
   if len(arr) > 1:
     mid = len(arr) // 2
-	
+
     left = arr[:mid]
     right = arr[mid:]
-	
+
     mergeSort(left)
     mergeSort(right)
 

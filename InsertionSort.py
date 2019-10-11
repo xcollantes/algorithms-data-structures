@@ -1,35 +1,26 @@
-
-import random
+#!/usr/bin/python2
+"""Insertion Sort"""
 
 def main():
 
   A = [5,4,2,1,3,0]
-  print(A)
+  print A
 
-  currIndex = 0
+  for e in range(1, len(A) - 1):
+    currIndex = e - 1
+    target = e
+    print 'e:{}  {} {} {}'.format(e, A[currIndex - 1], A[target], A[currIndex + 1])
+    while A[currIndex - 1] > A[e] > A[currIndex + 1]:
+      currIndex = currIndex - 1
+      print 'currIndex dec:', currIndex
+    A[currIndex], A[e] = A[e], A[currIndex]
 
-  while currIndex <= len(A) - 1:
-    print(f'currIndex: {currIndex}')
-
-    currVal = A[currIndex]
-    if currVal < A[currIndex - 1]:
-      A[currIndex] = A[currIndex - 1]
-      A[currIndex - 1] = currVal
 
 
-      sortIndex = currIndex
-      sortVal = A[sortIndex]
-      while sortIndex >= 0:
-        if A[sortIndex - 1] > sortVal:
-          A[sortIndex] = A[sortIndex - 1]
-          A[sortIndex - 1] = sortVal
 
-        sortIndex -= 1
-        currVal = A[sortIndex]
 
-    currIndex += 1
 
-  print(A)
+  print A
 
 
 
