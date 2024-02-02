@@ -10,15 +10,14 @@ def bubblesort(input: list) -> list:
         return []
 
     finish_counter: int = 0
-    currentIdx: int = 0
 
     while finish_counter < len(input) - 1:
-        print(f"ITERATION: finish: {finish_counter}; currentIdx: {currentIdx}; {input}")
 
-        # Once you reach the end of the list, return to start
-        if currentIdx >= len(input) - 1:
-            currentIdx = 0
-        else:
+        for currentIdx in range(len(input) - 1):
+            # print(
+            #     f"ITERATION: finish: {finish_counter}; currentIdx: {currentIdx}; {input}"
+            # )
+
             if input[currentIdx] > input[currentIdx + 1]:
                 # Python way
                 input[currentIdx], input[currentIdx + 1] = (
@@ -38,5 +37,19 @@ def bubblesort(input: list) -> list:
                 finish_counter += 1
 
         currentIdx += 1
+
+    return input
+
+
+def optimized_bubblesort(input: list) -> list:
+    """Optimized version of BubbleSort."""
+    if len(input) < 1:
+        return []
+
+    for outer in range(len(input)):
+        for left in range(len(input) - outer - 1):
+            print(f"ITERATION: outer: {outer}; left: {left}; {input}")
+            if input[left] > input[left + 1]:
+                input[left], input[left + 1] = input[left + 1], input[left]
 
     return input
