@@ -1,30 +1,42 @@
-def main():
-    data = [3, 5, 1, 9, -1, 0, -1, 23, 12]
-    finish = 0
-    index = 0
+"""Bubblesort.
 
-    print(f"Starting {data}")
+Bubble sort has time complexity O(n^2).
+"""
 
-    while finish != len(data) - 1:
-        print(f"finish: {finish}  index: {index}  DATA: {data}")
-        if index != len(data) - 1:
 
-            if data[index] <= data[index + 1]:
-                finish += 1
-            else:
-                temp = data[index]
-                data[index] = data[index + 1]
-                data[index + 1] = temp
+def bubblesort(input: list) -> list:
+    """Returns sorted array."""
+    if len(input) < 1:
+        return []
 
-                finish = 0  # Restart indices with good match
+    finish_counter: int = 0
+    currentIdx: int = 0
 
-            index += 1
+    while finish_counter < len(input) - 1:
+        print(f"ITERATION: finish: {finish_counter}; currentIdx: {currentIdx}; {input}")
 
+        # Once you reach the end of the list, return to start
+        if currentIdx >= len(input) - 1:
+            currentIdx = 0
         else:
-            index = 0
+            if input[currentIdx] > input[currentIdx + 1]:
+                # Python way
+                input[currentIdx], input[currentIdx + 1] = (
+                    input[currentIdx + 1],
+                    input[currentIdx],
+                )
 
-    print(data)
+                # Non-Python way: use temp value
+                # temp_value = input[currentIdx]
+                # input[currentIdx] = input[currentIdx + 1]
+                # input[currentIdx + 1] = temp_value
 
+                # If switch is required, start over tracking
+                finish_counter = 0
+            else:
+                # If no need for switching, then keep track
+                finish_counter += 1
 
-if __name__ == "__main__":
-    main()
+        currentIdx += 1
+
+    return input
