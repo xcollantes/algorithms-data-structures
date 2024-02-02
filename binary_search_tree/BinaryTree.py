@@ -11,7 +11,7 @@ class BinaryTree:
 
 
   def put(self, key):
-    if 
+    if
 
   def PreOrder(self):
       print(self.data, '->', end=" ")
