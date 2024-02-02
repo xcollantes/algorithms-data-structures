@@ -10,7 +10,7 @@ class TestSort(unittest.TestCase):
         self.cases(bubblesort.bubblesort)
 
     def test_optimized_bubblesort(self):
-        """Test optmized bubblesort."""
+        """Test optimized bubblesort."""
         self.cases(bubblesort.optimized_bubblesort)
 
     def cases(self, fn):
