@@ -9,6 +9,10 @@ class TestSort(unittest.TestCase):
         """Test bubblesort.py."""
         self.cases(bubblesort.bubblesort)
 
+    def test_optimized_bubblesort(self):
+        """Test optmized bubblesort."""
+        self.cases(bubblesort.optimized_bubblesort)
+
     def cases(self, fn):
         self.assertEqual(
             fn([39, 19, 38, 88, 134, 32, 28, 142, 56, 67]),
@@ -26,6 +30,10 @@ class TestSort(unittest.TestCase):
             fn([1, 2, 2, 3]),
             [1, 2, 2, 3],
         )
+
+        # GIANT DATA SET TO SHOW HOW SLOW BUBBLESORT IS.
+        # UNCOMMENT AT YOUR OWN RISK IF PRINT STATEMENTS ARE INCLUDED!!!
+        #
         # self.assertEqual(
         #     fn(
         #         [
