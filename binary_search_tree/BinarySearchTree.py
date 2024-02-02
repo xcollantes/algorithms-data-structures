@@ -2,7 +2,7 @@
 """
 __author__ = 'Xavier Collantes'
 
-from BSTNode import BSTNode as Node
+from binary_search_tree.BSTNode import BSTNode as Node
 
 def main():
   bst = BinarySearchTree()

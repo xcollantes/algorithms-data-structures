@@ -2,7 +2,7 @@
 
 __author__ = 'Xavier Collantes'
 
-from Stack import Stack
+from stack.Stack import Stack
 
 def main():
   s = Stack()
