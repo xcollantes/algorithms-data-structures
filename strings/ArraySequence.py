@@ -1,7 +1,4 @@
-"""Array Sequence Practice
-"""
-
-__author__ = "Xavier Collantes"
+"""Array Sequence Practice."""
 
 import copy
 import random
