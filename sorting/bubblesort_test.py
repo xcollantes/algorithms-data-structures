@@ -1,10 +1,10 @@
-"""Unit test for all sorting."""
+"""Unit test for bubblesort.py."""
 
 import unittest
 from sorting import bubblesort
 
 
-class TestSort(unittest.TestCase):
+class TestBubbleSort(unittest.TestCase):
     def test_bubblesort(self):
         """Test bubblesort.py."""
         self.cases(bubblesort.bubblesort)
@@ -16,20 +16,22 @@ class TestSort(unittest.TestCase):
     def cases(self, fn):
         self.assertEqual(
             fn([39, 19, 38, 88, 134, 32, 28, 142, 56, 67]),
-            [19, 28, 32, 38, 39, 56, 67, 88, 134, 142],
+            [
+                19,
+                28,
+                32,
+                38,
+                39,
+                56,
+                67,
+                88,
+                134,
+                142,
+            ],
         )
-        self.assertEqual(
-            fn([]),
-            [],
-        )
-        self.assertEqual(
-            fn([1]),
-            [1],
-        )
-        self.assertEqual(
-            fn([1, 2, 2, 3]),
-            [1, 2, 2, 3],
-        )
+        self.assertEqual(fn([1]), [1])
+        self.assertEqual(fn([]), [])
+        self.assertEqual(fn([1, 2, 2, 3]), [1, 2, 2, 3])
 
         # GIANT DATA SET TO SHOW HOW SLOW BUBBLESORT IS.
         # UNCOMMENT AT YOUR OWN RISK IF PRINT STATEMENTS ARE INCLUDED!!!
