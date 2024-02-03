@@ -1,6 +1,10 @@
 """Bubblesort.
 
-Bubble sort has time complexity O(n^2).
+Time complexity O(n^2) since the first iteration for each element then if the
+array is backwards to start, then each element might have to move by as many
+elements.
+
+Space complexity O(1) since there needs to be a temp value.
 """
 
 
