@@ -1,5 +1,8 @@
 """Insertion sort.
 
+For each iteration of the element (step_idx), you are comparing the (step_idx) to
+each value behind the (step_idx).
+
 Time complexity O(n^2).
 Space complexity O(1) since there is a key value held outside of the array.
 """
@@ -11,17 +14,17 @@ def insertion(input: list) -> list:
         return []
 
     # Iterates over the array O(n)
-    for stepIdx in range(1, len(input)):
+    for step_idx in range(1, len(input)):
 
-        temp_value: any = input[stepIdx]
-        prevIdx: any = stepIdx - 1
+        temp_value: any = input[step_idx]
+        prev_idx: any = step_idx - 1
 
-        print(f"input: {input}; prevIdx: {prevIdx}; temp: {temp_value};")
+        print(f"input: {input}; prev_idx: {prev_idx}; temp: {temp_value};")
 
-        while temp_value < input[prevIdx] and prevIdx >= 0:
-            input[prevIdx + 1] = input[prevIdx]
-            prevIdx -= 1
+        while temp_value < input[prev_idx] and prev_idx >= 0:
+            input[prev_idx + 1] = input[prev_idx]
+            prev_idx -= 1
 
-        input[prevIdx + 1] = temp_value
+        input[prev_idx + 1] = temp_value
 
     return input

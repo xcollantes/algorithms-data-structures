@@ -20,44 +20,44 @@ def merge_recursive(input: list) -> None:
     Recursive version where function is called with splitting up until atomic
     values then combined; sort as list is merged.
     """
+    if len(input) <= 1:
+        return input
 
-    # print(input)
+    # Split phase until each element is in atomic elements
+    mid: int = len(input) // 2  # Integer divide
 
-    if len(input) > 1:
+    left = input[:mid]
+    right = input[mid:]
 
-        # Split phase until each element is in atomic elements
-        mid: int = len(input) // 2  # Integer divide
+    # Left split until end of tree.
+    # Then continue with function to split on right.
+    print(f"LEFT: {left}")
+    merge_recursive(left)
 
-        left = input[:mid]
-        right = input[mid:]
+    print(f"RIGHT: {right}")
+    merge_recursive(right)
 
-        # Left split until end of tree.
-        # Then continue with function to split on right.
-        print(f"LEFT: {left}")
-        merge_recursive(left)
+    left_idx = right_idx = result_idx = 0
 
-        print(f"RIGHT: {right}")
-        merge_recursive(right)
-
-        left_idx = right_idx = result_idx = 0
-
-        while left_idx < len(left) and right_idx < len(right):
-            if left[left_idx] < right[right_idx]:
-                input[result_idx] = left[left_idx]
-                left_idx += 1
-            else:
-                input[result_idx] = right[right_idx]
-                right_idx += 1
-
-            result_idx += 1
-
-        # Append the rest of array when only left or only right remain
-        while left_idx < len(left):
+    while left_idx < len(left) and right_idx < len(right):
+        if left[left_idx] < right[right_idx]:
             input[result_idx] = left[left_idx]
             left_idx += 1
-            result_idx += 1
-
-        while right_idx < len(right):
+        else:
             input[result_idx] = right[right_idx]
             right_idx += 1
-            result_idx += 1
+
+        result_idx += 1
+
+    # Append the rest of array when only left or only right remain
+    while left_idx < len(left):
+        input[result_idx] = left[left_idx]
+        left_idx += 1
+        result_idx += 1
+
+    while right_idx < len(right):
+        input[result_idx] = right[right_idx]
+        right_idx += 1
+        result_idx += 1
+
+    return input
