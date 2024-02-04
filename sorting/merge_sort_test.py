@@ -9,21 +9,29 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 class TestMergeSort(unittest.TestCase):
     def test_recursive(self):
-        test_array = [39, 19, 38, 88, 134, 32, 28, 142, 56, 67]
-        expected = sorted(test_array.copy())
+
+        test_arrays = [
+            [39, 19, 38, 88, 134, 32, 28, 142, 56, 67],
+            [1],
+            [],
+            [1, 2, 2, 3],
+        ]
+
+        for test in test_arrays:
+            expected = sorted(test.copy())
+            logging.info(expected)
+
+            l: int = len(test)
+            result = merge_recursive(test)
+
+            logging.info(f"RESULT: {result}")
+
+            self.assertEqual(
+                result,
+                expected,
+            )
+
         logging.info(expected)
-        merge_recursive(test_array)
-        logging.info(f"RESULT: {test_array}")
-        self.assertEqual(
-            test_array,
-            expected,
-        )
-        self.assertEqual(
-            [],
-            [],
-        )
-        self.assertEqual([1], [1])
-        self.assertEqual([1, 2, 2, 3], [1, 2, 2, 3])
 
         # GIANT DATA SET TO SHOW HOW SLOW BUBBLESORT IS.
         # UNCOMMENT AT YOUR OWN RISK IF PRINT STATEMENTS ARE INCLUDED!!!
