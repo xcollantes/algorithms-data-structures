@@ -2,24 +2,23 @@
 
 
 def main():
-  s = 'abc'
-  print(permute(s))
+    s = "abc"
+    print(permute(s))
 
 
 def permute(s):
-  out = []
+    out = []
 
-  if len(s) == 1:
-    out = [s]
+    if len(s) == 1:
+        out = [s]
 
-  for i,letter in enumerate(s):
+    for i, letter in enumerate(s):
 
-    for perm in permute(s[:i] + s[i + 1:]):
-      out = out + [letter + perm]
+        for perm in permute(s[:i] + s[i + 1 :]):
+            out = out + [letter + perm]
+
+    return out
 
 
-  return out
-
-
-if __name__=='__main__':
-  main()
+if __name__ == "__main__":
+    main()

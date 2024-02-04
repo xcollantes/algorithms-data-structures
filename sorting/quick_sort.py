@@ -4,7 +4,7 @@ Using Lomuto partition where the pivot element is the last element of list.
 
 Time complexity O(n^2) since
 
-Space complexity O(n log n) since
+Space complexity O() since
 """
 
 

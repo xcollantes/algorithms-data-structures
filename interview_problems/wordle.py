@@ -1,19 +1,19 @@
 """Wordle interview question.
 
-5 letter word in English where player has 6 tries.  Player gets clues when they 
+5 letter word in English where player has 6 tries.  Player gets clues when they
 attempt to guess the word.
 
 Cases:
-    Yellow: letter in word but wrong position 
-    Grey: letter not in word 
-    Green: letter in word and in correct position 
+    Yellow: letter in word but wrong position
+    Grey: letter not in word
+    Green: letter in word and in correct position
 
 Words will be in a TXT file.  The output will be in G for green,
-Y for yellow, and R for grey representing the colors.  
-So if FOCUS is the answer word and player guesses SALTS, then 
-function would return YRRRG.  
+Y for yellow, and R for grey representing the colors.
+So if FOCUS is the answer word and player guesses SALTS, then
+function would return YRRRG.
 
-How to deal with repeated letters? 
+How to deal with repeated letters?
 
 """
 
@@ -33,7 +33,7 @@ def get_letter(guess: str, answer: str) -> str:
         guess (str): Player's guess word.
 
     Returns:
-        str: Combination of GRY. 
+        str: Combination of GRY.
     """
     G: list = list(guess)
     A: list = list(answer)

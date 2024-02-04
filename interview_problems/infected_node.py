@@ -34,16 +34,16 @@ def main():
 def path_exists(start: int, stop: int, infected: int) -> bool:
     """Determine if start and stop have a connection without infected node.
 
-    Traverse the network as if we don't know the entire network.  
+    Traverse the network as if we don't know the entire network.
 
-    Args: 
+    Args:
         start: Beginning point to trace path.
         stop: Finish point to trace path.
         infected: Node which cannot be passed.
 
     Returns:
         True if start and stop have a connection without infected Node.
-        False if no path is found without infected node.  
+        False if no path is found without infected node.
     """
     if not NETWORK:
         return False
