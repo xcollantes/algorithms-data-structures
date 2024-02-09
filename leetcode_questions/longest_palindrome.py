@@ -14,9 +14,6 @@ def palindrome(s: str) -> str:
     current = ""
     while right > len(s) // 2:
         if s[left] == s[right]:
-            logging.info(
-                "new current: %s",
-            )
             current = s[left:right]
 
         left += 1
