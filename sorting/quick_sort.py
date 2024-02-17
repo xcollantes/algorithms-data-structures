@@ -2,9 +2,12 @@
 
 Using Lomuto partition where the pivot element is the last element of list.
 
-Time complexity O(n^2) since
 
-Space complexity O() since
+Select a pivot element then perform swaps to get the lesser values before the
+pivot and greater values after.
+
+Time complexity: O(n log n) on average; O(n^2) worst case; Since the partition
+is not guaranteed to be the median, the algorithm potentially could take n^2.
 """
 
 
@@ -12,9 +15,8 @@ def quicksort(array: list, lower: int, upper: int) -> list:
     """Quick sort.
 
     Args:
-        array: Unsorted array.
-        lower: Lower bound of array.
-        upper: Upper bound or array.
+        array: Unsorted array.  lower: Lower bound of array.  upper: Upper bound
+        or array.
 
     Returns:
         Sorted array.
