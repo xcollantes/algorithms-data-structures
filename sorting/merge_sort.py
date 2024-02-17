@@ -8,6 +8,16 @@ there, the combining stage is O(n).
 
 Space complexity O(1) since there is a key value held outside of the array.
 
+Divide and conquer technique with time complexity of O(n log n). The array is
+broken down to its most atomic parts then put back together but the parts are
+compared when reorganized.
+
+The mid element is chosen using `mid: int = len(input) // 2` where the `//` will
+return the floor divide of the operands. This is true for Python3.
+
+Time complexity: O(n log n). Breaks down the list of elements and makes
+comparisons for each atomic value.
+
 https://www.programiz.com/dsa/merge-sort
 """
 
@@ -29,8 +39,8 @@ def merge_recursive(input: list) -> None:
     left = input[:mid]
     right = input[mid:]
 
-    # Left split until end of tree.
-    # Then continue with function to split on right.
+    # Left split until end of tree.  Then continue with function to split on
+    # right.
     print(f"LEFT: {left}")
     merge_recursive(left)
 
