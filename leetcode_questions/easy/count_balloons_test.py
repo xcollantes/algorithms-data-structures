@@ -13,3 +13,4 @@ class TestBalloons(unittest.TestCase):
         self.assertEqual(count_balloons("nlaebolko"), 1)
         self.assertEqual(count_balloons("loonbalxballpoon"), 2)
         self.assertEqual(count_balloons("leetcode"), 0)
+        self.assertEqual(count_balloons("lloo"), 0)

@@ -107,3 +107,14 @@ print(sorted(a))  # Prints [1, 2, 3]
 o = {"a": 2, "c": 1, "b": 0}
 print(sorted(o))  # Prints ["a", "b", "c"]
 ```
+
+## enumerate
+
+Takes an iterable and return an array of tuples with the first element as a
+sequential number for each tuple.
+
+```python
+a = ['h', 'l', 'l', 'o']
+[i for i in enumerate(a)]
+# [(0, 'h'), (1, 'l'), (2, 'l'), (3, 'o')]
+```

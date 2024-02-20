@@ -60,6 +60,20 @@ From what I can research, there always needs to be 2 list type data structures
 track is the max number of nodes since a node is either visited, to visit, not
 yet known.
 
+## BFS vs DFS
+
+Breadth First Search is good for prioritizing the sibling nodes which are the
+same level as the starting point.
+
+Depth First Search is good for reaching as far as the graph goes as a priority.
+
+In both, each node will be checked.
+
+On a technical practice, the biggest difference is that the data structure which
+tracks the neighbors. In BFS the "next node" to check is taken from the left of
+the queue. In DFS the "next node" to check is taken from the right. In both we
+assume you are adding new nodes to the right of the queue.
+
 ## Use cases
 
 Topological sorting, scheduling problems, graph cycle detection, and solving
