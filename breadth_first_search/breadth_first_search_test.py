@@ -3,6 +3,8 @@
 import unittest
 import logging
 
+from breadth_first_search.breadth_first_search import bfs
+
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -36,4 +38,6 @@ class TestBfs(unittest.TestCase):
         }
 
     def test_bfs_recursive(self):
-        visited = list()
+        answer = bfs(self.graph_hashmap, 0)
+        logging.info(answer)
+        self.assertEqual(answer, set([0, 1, 2, 3, 4]))

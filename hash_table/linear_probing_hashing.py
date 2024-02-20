@@ -1,62 +1,19 @@
 """Hashing with Linear Probing for hash collisions."""
 
-import logging
-from basic_hashing import HashTable
-from typing import Any
 
+def linear_probe_insert(items: list[int]) -> list:
+    """If slot is occupied, check for +1 slot."""
+    hash_table: list[int | None] = [None for _ in items]
+    remaining_capacity = len(hash_table) - 1
 
-logging.basicConfig(level=logging.DEBUG, format="%(message)s")
+    for item in items:
+        hash_idx = item % len(hash_table)
 
+        while remaining_capacity > 0:
+            if hash_table[hash_idx] is not None:
+                hash_table[hash_idx] = item
+                remaining_capacity += 1
+            else:
+                hash_idx += 1
 
-def main():
-    logging.info("Basic Hash Table")
-
-    h = HashTable(10)
-    h.print_table()
-    h.insert(12, "Foo")
-    h.insert(13, "bar")
-    h.insert(14, "hello")
-    h.print_table()
-    h.remove(12)
-    h.print_table()
-
-    logging.info("Linear probing Hash Table")
-    linear = LinearProbe(10)
-    linear.print_table()
-    linear.insert(12, "Foo")
-    linear.insert(13, "bar")
-    linear.insert(14, "hello")
-    logging.info("introduce conflict")
-    linear.insert(12, "conflict")
-    linear.print_table()
-    linear.remove(12)
-    linear.print_table()
-
-
-class LinkedListNode:
-    """Doubly Linked List."""
-
-    def __init__(self, value: Any,
-                 prev_node=None,
-                 next_node=None) -> None:
-        self.prev_node = prev_node
-        self.value = value
-        self.next_node = next_node
-
-
-class LinearProbe(HashTable):
-
-    # Override
-    def insert(self, key: Any, data: Any):
-        index = self.hash(key)
-
-        max_probing: int = 0
-        while self.hash_table[index] is not None and max_probing < self.capacity:
-            index += 1
-            max_probing += 1
-
-        self.hash_table[index] = [key, data]
-
-
-if __name__ == "__main__":
-    main()
+    return hash_table
