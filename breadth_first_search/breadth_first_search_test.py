@@ -1,15 +1,15 @@
-"""Unit test for depth_first_search.py."""
+"""Unit test for breadth_first_search.py."""
 
 import unittest
 import logging
 
-from depth_first_search.depth_first_search import dfs_stack, recursive_dfs
+from breadth_first_search.breadth_first_search import bfs
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
-class TestDfs(unittest.TestCase):
+class TestBfs(unittest.TestCase):
     def setUp(self):
         # Graph is undirected since e refers back to 1, 2, and 3.
         #
@@ -37,9 +37,7 @@ class TestDfs(unittest.TestCase):
             4: [1, 2, 3],
         }
 
-    def test_dfs_recursive(self):
-        visited = list()
-        self.assertEqual(recursive_dfs(visited, self.graph_hashmap, 0), [0, 1, 4, 2, 3])
-
-    def test_dfs_stack(self):
-        self.assertEqual(dfs_stack(self.graph_hashmap, 0), [0, 3, 4, 2, 1])
+    def test_bfs_recursive(self):
+        answer = bfs(self.graph_hashmap, 0)
+        logging.info(answer)
+        self.assertEqual(answer, set([0, 1, 2, 3, 4]))

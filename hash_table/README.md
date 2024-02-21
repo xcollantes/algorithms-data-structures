@@ -3,23 +3,36 @@
 A Hash Table is a way to store data after being processed by a Hash Function.
 The Hash Table will contain data with a Key and Value pair.
 
-Hash collision: When a Hash Function creates duplicate Keys and a conflict is
-created where that Key is stored.
+When creating a hash function, the ID or value is used to determine the hash
+value. So a hash function may use the input value `10` with hash function `hash = 10 % <some_action>`.
 
-Resolve Hash collisions by choosing a technique: - resolve by "chaining" -
-resolve through "open addressing" - linear/quadratic probing - double hashing
+## Hash collision
 
-Chaining: When a collision is found, store the new data using a Doubly Linked
-List.
+When a Hash Function creates duplicate Keys and a conflict is created where that
+Key is stored.
+
+Resolve Hash collisions by choosing a technique:
+
+- resolve by "chaining"
+- resolve through "open addressing"
+- linear/quadratic probing
+- double hashing
+
+## Chaining
+
+When a collision is found, store the new data using a Doubly Linked List.
 
 ![Hash
 chaining](https://cdn.programiz.com/sites/tutorial2program/files/Hash-3_1.png)
 
-Open addressing: Instead of storing multiple values in one slot in the Hash
-Table, each slot has one value or left NULL. Use either Linear probing or Double
-Hashing.
+## Open addressing
 
-Linear probing: If conflict is found, place value in next slot.
+Instead of storing multiple values in one slot in the Hash Table, each slot has
+one value or left NULL. Use either Linear probing or Double Hashing.
+
+## Linear probing
+
+If conflict is found, place value in next slot.
 
 ```python
 i = some index

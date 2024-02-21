@@ -34,6 +34,12 @@ Height of a Node: Number of edges from the node to the deepest leaf.
 
 Leaf: Node of tree with no children.
 
+![leetcode
+image](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/Figures/DSA/Chapter_5/25_1.png)
+
+Given the graphic above, you would keep calling `node.left` until there is a
+null, then call `node.right`.
+
 ## n-nary tree
 
 A tree where each node can possibly have 0 to infinitely many children.
