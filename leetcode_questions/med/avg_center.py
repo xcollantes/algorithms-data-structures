@@ -29,3 +29,22 @@ def avg_center(nums: list[int], k: int) -> list[int]:
         logging.info("Calculate: %s", result[idx])
 
     return result
+
+
+def faster_avg(nums: list[int], k: int) -> list[int]:
+    result: list[int] = [-1 for _ in range(len(nums))]
+    window_size = (k * 2) + 1
+    window_sum = 0
+
+    for idx in range(len(nums)):
+        window_sum += nums[idx]
+        if idx - window_size >= 0:
+            # Move the window forward by removing the first value in the array
+            window_sum -= nums[idx - window_size]
+
+        if idx >= window_size - 1:
+            # Index is at end of window
+            # Then determine the value of "center" of window with idx - k
+            result[idx - k] = window_sum // window_size
+
+    return result
