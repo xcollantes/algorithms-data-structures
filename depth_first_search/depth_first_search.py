@@ -60,3 +60,4 @@ def dfs_stack(graph: dict, start_node: any) -> list:
                 stack.append(adjacent_node)
 
     return visited
+

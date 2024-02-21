@@ -81,6 +81,26 @@ puzzles with one solution such as traverse a maze or solve a sudoku puzzle all
 require the use of DFS. Computer networking uses DFS for example if a network is
 bipartite.
 
+If you want to find the shortest path in a graph, then BFS is preferred.  For
+example, if using DFS, you'd have to traverse the length of the tree even
+two nodes are near each other horizontally.
+
+DFS will travel down one direction until a leaf is found then backtrack.
+
+![leetcode image](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/707/traversals-trees-graphs/Figures/DSA/Chapter_5/25_1.png)
+
+Given the graphic above, you would keep calling `node.left` until there is a
+null, then call `node.right`.  
+
+The process is as follows for DFS:
+
+1. Handle the base case, usually empty tree.  
+2. Do a thing to the data of hte current node.  
+3. Recursively call all the children of the current node.  
+4. Return the answer.  
+
+Note: 2 and 3 changes order depending on in-order, pre-order, post-order.  
+
 Sources:
 
 - <https://www.simplilearn.com/tutorials/data-structure-tutorial/dfs-algorithm>
