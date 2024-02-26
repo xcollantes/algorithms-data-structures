@@ -3,7 +3,7 @@
 import unittest
 import logging
 
-from binary_search_tree.simply_tree import Node
+from binary_search_tree.simply_tree import Node, NodeTree, inorder_print
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -14,10 +14,10 @@ class TestMinDepth(unittest.TestCase):
 
     def test_creation(self):
         vals = [3, 9, 20, None, None, 15, 7]
-        self.root = Node(vals[0])
-        for v in vals[1:]:
-            
 
+        tree = NodeTree()
+        root = tree.array_to_tree(vals)
+        inorder_print(root)
 
     def test_min_depth(self):
         self.assertEqual("", "")

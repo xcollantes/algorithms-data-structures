@@ -9,9 +9,6 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class TestSimplyTree(unittest.TestCase):
-    def is_equal(self, tree_one: Node, tree_two: Node) -> bool:
-        """Returns true if two trees are equal."""
-
     def preorder_traverse(self, node: Node) -> list:
         """Traverse whole tree in pre-order."""
         values = []
@@ -39,8 +36,7 @@ class TestSimplyTree(unittest.TestCase):
         vals = [5, 1, 2, 3, 0]
         result_tree = NodeTree()
         result_tree.array_to_tree(vals)
-        logging.info(self.preorder_traverse(result_tree.get_root()))
 
-        # result_tree.array_to_tree(vals)
-
-        # self.assertTrue(self.is_equal(expected_tree, result_tree))
+        self.assertEqual(
+            self.preorder_traverse(result_tree.get_root()).sort(), vals.sort()
+        )
