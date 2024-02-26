@@ -1,6 +1,7 @@
 """Simple node tree which can be used to quickly create trees."""
 
 import logging
+from re import I
 
 
 class Node:
@@ -25,7 +26,7 @@ class NodeTree:
     def get_root(self) -> Node:
         return self.root
 
-    def array_to_tree(self, array: list[int]) -> Node:
+    def array_to_bst(self, array: list[int]) -> Node:
         """Converts given array to a node tree.
 
         Args:
@@ -40,6 +41,46 @@ class NodeTree:
 
         return self.root
 
+    def array_to_tree_leetcode(self, array: list[int]) -> Node:
+        """Fill tree children before moving levels left to right.
+
+        Takes in an array with None value. This is how LeetCode expresses a tree
+        with a None child.
+        """
+        self.root.val = array[0]
+        current_node = self.root
+
+        level = 0
+
+        for idx in range(len(array[1:])):
+            if idx >= level**2:
+                level += 1
+
+            current_node = self._find_parent(current_node, level)
+
+            if current_node.left:
+                current_node.left = Node(array[idx])
+            else:
+                current_node.right = Node(array[idx])
+
+        return self.root
+
+    def _find_parent(self, node: Node, level: int) -> Node:
+        """Filling left to right on a specific level.
+
+        The place to start must be found on a certain level.
+        """
+        if node is None:
+            return None
+        if level == 1:
+            return node
+
+        parent = self._find_parent(node.left, level - 1)
+        if parent:
+            return parent
+        else:
+            return self._find_parent(node.right, level - 1)
+
     def _add_node(self, node: Node, val: any) -> None:
         """Recursively add to tree."""
         if val < node.val:
@@ -52,14 +93,3 @@ class NodeTree:
                 self._add_node(node.right, val)
             else:
                 node.right = Node(val)
-
-    def _add_node_left_right(self, node: Node, val: any) -> None:
-        """Fill tree children before moving levels left to right."""
-        if node.val is None:
-            return
-        if node.left is None:
-            node.left = Node(val)
-        if node.right is None:
-            node.right = Node(val)
-        elif node.left and node.right:
-            self._add_node_left_right(node.left, val)

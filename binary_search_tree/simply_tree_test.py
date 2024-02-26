@@ -12,11 +12,12 @@ class TestSimplyTree(unittest.TestCase):
     def preorder_traverse(self, node: Node) -> list:
         """Traverse whole tree in pre-order."""
         values = []
-        if node:
-            logging.info("Visiting node: %s", node.val)
 
-            values.append(node.val)
+        logging.info("Visiting node: %s", node.val)
+        values.append(node.val)
+        if node.left:
             values += self.preorder_traverse(node.left)
+        if node.right:
             values += self.preorder_traverse(node.right)
 
         return values
@@ -35,7 +36,7 @@ class TestSimplyTree(unittest.TestCase):
     def test_array(self):
         vals = [5, 1, 2, 3, 0]
         result_tree = NodeTree()
-        result_tree.array_to_tree(vals)
+        result_tree.array_to_bst(vals)
 
         self.assertEqual(
             self.preorder_traverse(result_tree.get_root()).sort(), vals.sort()
