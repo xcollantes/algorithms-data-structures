@@ -2,6 +2,11 @@
 
 A tree where each node can possibly have up to 2 children.
 
+The nodes of a graph are also called vertices, and the pointers that connect
+them are called edges. In graphical representations, nodes/vertices are usually
+represented with circles and the edges are lines/arrows that connect the
+circles.
+
 Perfect binary tree: All nodes have 0 or 2 children and all leaf nodes are at
 the same level.
 
