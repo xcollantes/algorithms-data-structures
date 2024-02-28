@@ -31,3 +31,13 @@ computation, we use something called memoization. When we find the answer (the
 return value) for a given state, we cache that value (usually in a hash map).
 Then in the future, if we ever see the same state again, we can just refer to
 the cached value without needing to re-calculate it.
+
+## Fibonacci as an example
+
+![](https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/712/dynamic-programming/Figures/DSA/Chapter_10/49_1.png)
+
+As you can see, there is a lot of repeated computation - for example, f(4) is
+calculated twice, f(3) is calculated 3 times, and f(2) is calculated 5 times. At
+this size, it doesn't seem like a big deal. However, as n grows, the repeated
+computation grows exponentially. If we wanted to calculate f(7), then this
+entire tree would be just one side of the root.
