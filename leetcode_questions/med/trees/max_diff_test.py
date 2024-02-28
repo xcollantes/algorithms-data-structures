@@ -1,4 +1,4 @@
-"""Unit test for levels_ancestor.py."""
+"""Unit test for max_diff.py."""
 
 import unittest
 import logging
@@ -6,6 +6,6 @@ import logging
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
-class TestLevelsAncestor(unittest.TestCase):
-    def test_levels_ancestor(self):
+class TestMaxDiff(unittest.TestCase):
+    def test_max_diff(self):
         self.assertEqual("", "")
