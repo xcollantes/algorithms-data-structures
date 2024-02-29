@@ -19,6 +19,8 @@ def climb(n: int) -> int:
 
         # Each step has a number of ways to get there
         # For each new step, add up the ways to there calculated already
-        count_ways[idx] = max(count_ways[idx - 2], count_ways[idx - 1]) + 1
+        count_ways[idx] = count_ways[idx - 2] + count_ways[idx - 1]
+
+        logging.info("  count_ways: %s", count_ways)
 
     return count_ways[-1]

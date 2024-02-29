@@ -12,4 +12,4 @@ class TestClimbingStairs(unittest.TestCase):
     def test_climbing_stairs(self):
         self.assertEqual(climb(2), 2)
         self.assertEqual(climb(3), 3)
-        self.assertEqual(climb(10), 10)
+        self.assertEqual(climb(10), 89)
