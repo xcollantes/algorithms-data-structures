@@ -118,3 +118,54 @@ a = ['h', 'l', 'l', 'o']
 [i for i in enumerate(a)]
 # [(0, 'h'), (1, 'l'), (2, 'l'), (3, 'o')]
 ```
+
+## Shallow vs Deep copy
+
+Shallow creates a new instance in memory for one level deep only.
+
+In this example, `list()` will create a shallow copy where the object is copied
+non-recursively. For this use case, it works since the object is one dimension
+anyway.
+
+```python
+a = [0, 1, 2, 3]
+b = a
+c = list(a)
+
+a[0] = 9
+
+print(a)  # [9, 1, 2, 3]
+print(b)  # [9, 1, 2, 3]
+print(c)  # [0, 1, 2, 3]
+```
+
+In this example, a shallow copy is created but the object is 2 dimensional so
+the change in `a` also affects `c`.
+
+```python
+a = [[0, 1], [2, 3]]
+b = a
+c = list(a)
+
+a[0][0] = 9
+
+print(a)  # [[9, 1], [2, 3]]
+print(b)  # [[9, 1], [2, 3]]
+print(c)  # [[9, 1], [2, 3]]
+```
+
+Deep copy creates a new instance with recursive copy in memory.
+
+```python
+import copy
+
+a = [[0, 1], [2, 3]]
+b = a
+c = copy.deepcopy(a)
+
+a[0][0] = 9
+
+print(a)  # [[9, 1], [2, 3]]
+print(b)  # [[9, 1], [2, 3]]
+print(c)  # [[0, 1], [2, 3]]
+```
