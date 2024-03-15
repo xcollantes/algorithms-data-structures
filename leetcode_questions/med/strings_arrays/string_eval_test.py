@@ -13,3 +13,4 @@ class TestStringEval(unittest.TestCase):
         self.assertEqual(string_eval(s="3+2*2"), 7)
         self.assertEqual(string_eval(s=" 3/2 "), 1)
         self.assertEqual(string_eval(s=" 3+5 / 2 "), 5)
+        self.assertEqual(string_eval(s="14-3/2"), 12)
