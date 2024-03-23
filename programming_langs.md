@@ -33,6 +33,11 @@
   - Use a "deepcopy" to create new memory space for an instance
   - No warning when infinite recursion eats up memory as opposed to NextJS where
     a warning error will halt program
+- No private variables
+  - Object-oriented programming can work in Python but private variables don't
+    truly exist
+  - You can mark functions as private and the function names can be obfuscated
+    but are still accessible
 
 ## JavaScript
 
