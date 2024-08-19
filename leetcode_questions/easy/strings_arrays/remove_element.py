@@ -29,24 +29,16 @@ for (int i = 0; i < actualLength; i++) {
 }
 """
 
+
 def remove_element(nums: list[int], val: int) -> int:
-
-    not_val = 0
-    i = 1
-    last_num_i = len(nums) - 1
-    while i < last_num_i and nums[i] != "_":
-        if nums[i] == val:
-            nums[i] = "_"
-            nums[i], nums[last_num_i] = nums[last_num_i], nums[i]
-            last_num_i -= 1
-
+    current = 0
+    for i in range(len(nums)):
         if nums[i] != val:
-            i += 1
-            not_val += 1
+            # Just replace current with non-val value.
+            nums[current] = nums[i]
+            current += 1
 
-        print(nums)
-    print(nums)
-    return not_val
+    return current
 
 
 print(remove_element(nums=[3, 2, 2, 3], val=3))
