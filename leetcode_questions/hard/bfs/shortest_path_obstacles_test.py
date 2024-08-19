@@ -14,6 +14,7 @@ class TestShortestPathObstacles(unittest.TestCase):
         # The shortest path without eliminating any obstacle is 10. The shortest
         # path with one obstacle elimination at position (3,2) is 6. Such path
         # is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) -> (3,2) -> (4,2).
+        # https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg
         self.assertEqual(
             quickest_path(
                 grid=[[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]], k=1
@@ -22,6 +23,7 @@ class TestShortestPathObstacles(unittest.TestCase):
         )
 
         # We need to eliminate at least two obstacles to find such a walk.
+        # https://assets.leetcode.com/uploads/2021/09/30/short2-grid.jpg
         self.assertEqual(
             quickest_path(grid=[[0, 1, 1], [1, 1, 1], [1, 0, 0]], k=1),
             -1,
