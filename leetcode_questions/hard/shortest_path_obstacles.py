@@ -8,12 +8,13 @@ obstacles. If it is not possible to find such walk return -1.
 """
 
 
+def quickest_path(grid: list[list[int]], k: int) -> int:
+    for x in range(len(grid)):
+        for y in range(grid[0]):
+            
 
 
-
-
-
-def quickest_path(grid: list[list[int]], k: int):
-    pass
-
-
+def p(grid) -> None:
+    print("========")
+    for r in grid:
+        print(r)
