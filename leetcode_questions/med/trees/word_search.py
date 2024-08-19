@@ -40,6 +40,8 @@ class WordSearch:
             or col < 0
             or col == self.max_cols
             # Check the first letter which gets "shaved" off for every call of `__search()`
+            # This case is incase you find a letter you're not currently looking
+            # for.
             or self.board[row][col] != word[0]
         ):
             return False
