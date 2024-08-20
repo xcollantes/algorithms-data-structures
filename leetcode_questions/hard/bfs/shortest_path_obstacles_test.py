@@ -3,7 +3,7 @@
 import unittest
 import logging
 
-from leetcode_questions.hard.shortest_path_obstacles import quickest_path
+from leetcode_questions.hard.bfs.shortest_path_obstacles import quickest_path
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
