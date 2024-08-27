@@ -1,9 +1,9 @@
 """Maximum Profit in Job Scheduling.
 
-We have n jobs, where every job is scheduled to be done from startTime[i] to
-endTime[i], obtaining a profit of profit[i].
+We have n jobs, where every job is scheduled to be done from start_time[i] to
+end_time[i], obtaining a profit of profit[i].
 
-You're given the startTime, endTime and profit arrays, return the maximum profit
+You're given the start_time, end_time and profit arrays, return the maximum profit
 you can take such that there are no two jobs in the subset with overlapping time
 range.
 
@@ -12,39 +12,46 @@ that starts at time X.
 """
 
 
-from bisect import bisect_left
-
-
 def job_scheduling(
     start_time: list[int], end_time: list[int], profit: list[int]
 ) -> int:
+    # Combine times into a list.
     jobs = []
     for i in range(len(start_time)):
         jobs.append([start_time[i], end_time[i], profit[i]])
 
-    max_profits: list[int] = [-1] * len(start_time)
+    # Sort by the end time.
+    jobs.sort(key=lambda x: x[1])
+    print(f"Sorted: {jobs}")
 
-    jobs.sort(key=lambda x: x[0])
-    start_time.sort()
+    # DP array.
+    max_profits: list[int] = [0] * len(start_time)
+    max_profits[0] = jobs[0][2]  # Initialize with end time.
 
-    return find(0, jobs, start_time, len(start_time), max_profits)
+    for i in range(1, len(start_time)):
+        current_profit = jobs[i][2]  # Profit element.
+        print(f"current_profit: {current_profit}; max_profits: {max_profits}")
 
+        # Find latest job that doesn't conflict with current job.
+        left = 0
+        right = i - 1
+        # Where the right job starts less than or exactly when previous job
+        # ends.
+        while left <= right:
+            mid = (left + right) // 2  # Binary search: find mid to split jobs by.
 
-def find(job_idx, jobs, start_time, n, max_profits):
-    print(f"job_idx: {job_idx}; n: {n}, max_profits: {max_profits}")
-    if job_idx >= n:
-        return 0
+            # If end time is less than current job start time.
+            if jobs[mid][1] <= jobs[i][0]:
+                left = mid + 1
+            else:
+                right = mid - 1
 
-    if max_profits[job_idx] != -1:
-        return max_profits[job_idx]
+        # Add valid job's profit.
+        if right != -1:
+            current_profit += max_profits[right]
 
-    index = bisect_left(start_time, jobs[job_idx][1])
+        # Larger profit is stored in DP array: current or other larger profit
+        # for job.
+        max_profits[i] = max(max_profits[i - 1], current_profit)
 
-    pick = jobs[job_idx][2] + find(index, jobs, start_time, n, max_profits)
-    dont_pick = find(index + 1, jobs, start_time, n, max_profits)
-
-    print(f"pick: {pick}; not pick: {dont_pick}")
-
-    max_profits[index] = max(pick, dont_pick)
-
-    return max_profits[index]
+    return max_profits[-1]
