@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 class TestCountAndSay(unittest.TestCase):
     def test_count_and_say(self):
         self.cases(countAndSay)
-        # self.crazy_cases(countAndSay)
+        self.crazy_cases(countAndSay)
 
     def test_iterative(self):
         self.cases(countAndSayIterative)
