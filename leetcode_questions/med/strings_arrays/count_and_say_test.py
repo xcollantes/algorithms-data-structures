@@ -23,8 +23,11 @@ class TestCountAndSay(unittest.TestCase):
         #     countAndSay(2) = RLE of "1" = "11"
         #     countAndSay(3) = RLE of "11" = "21"
         #     countAndSay(4) = RLE of "21" = "1211"
+        print("fn(4)")
         self.assertEqual(fn(4), "1211")
+        print("fn(5)")
         self.assertEqual(fn(5), "111221")
+        print("fn(8)")
         self.assertEqual(fn(8), "1113213211")
 
         # Explanation:
