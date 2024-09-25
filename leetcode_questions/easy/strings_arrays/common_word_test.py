@@ -3,7 +3,7 @@
 
 import unittest
 
-from leetcode_questions.common_word import most_common_word
+from leetcode_questions.easy.strings_arrays.common_word import most_common_word
 
 
 class TestCommonWord(unittest.TestCase):
