@@ -9,6 +9,9 @@ replace "1" with "11". Thus the compressed string becomes "23321511".
 
 Given a positive integer n, return the nth element of the count-and-say
 sequence.
+
+The confusing part is that you have to perform the RLE on the result of the
+previous fucntion call.
 """
 
 
@@ -23,25 +26,28 @@ def countAndSay(n: int) -> str:
     if n == 1:
         return "1"
 
-    prev_result: int = countAndSay(n - 1)
+    # Returns the RLE
+    # n acts as another layer of performing the RLE.
+    prev_rle: int = countAndSay(n - 1)
     result: str = ""
-    first_prev: str = prev_result[0]
+    prev_rle_quantity: str = prev_rle[0]
 
     count: int = 1
 
-    for i in range(1, len(prev_result)):
-        if prev_result[i] == first_prev:
+    for i in range(1, len(prev_rle)):
+        print(f"i: {i}; prev_rle_quantity: {prev_rle_quantity}; prev_rle[i]: {prev_rle[i]}")
+        if prev_rle[i] == prev_rle_quantity:
             count += 1
         else:
             # Append count
             result += str(count)
-            result += str(first_prev)
-            first_prev = prev_result[i]
+            result += str(prev_rle_quantity)
+            prev_rle_quantity = prev_rle[i]
             count = 1
 
     result += str(count)
-    result += str(first_prev)
+    result += str(prev_rle_quantity)
 
-    print(f"result: {result}; prev {prev_result}; count: {count};")
+    print(f"result: {result}; prev {prev_rle}; count: {count};")
 
     return result
