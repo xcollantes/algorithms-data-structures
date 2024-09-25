@@ -9,6 +9,8 @@ range.
 
 If you choose a job that ends at time X you will be able to start another job
 that starts at time X.
+
+https://leetcode.com/problems/maximum-profit-in-job-scheduling/description
 """
 
 
@@ -47,6 +49,15 @@ def job_scheduling(
                 right = mid - 1
 
         # Add valid job's profit.
+        #
+        # If right == -1, it means no previous job ends before the current job
+        # starts. In this case, there is no profit from a previous job that can
+        # be added to the current job's profit.  
+        # 
+        # If right != -1, it means we
+        # found a valid job that does not overlap with the current job. Thus, we
+        # can safely add the profit of this job (max_profits[right]) to the
+        # current job's profit.
         if right != -1:
             current_profit += max_profits[right]
 
