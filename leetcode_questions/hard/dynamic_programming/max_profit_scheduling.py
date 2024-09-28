@@ -23,6 +23,7 @@ def job_scheduling(
         jobs.append([start_time[i], end_time[i], profit[i]])
 
     # Sort by the end time.
+    # We want to sort by end time since we can find where jobs start and end.
     jobs.sort(key=lambda x: x[1])
     print(f"Sorted: {jobs}")
 
@@ -52,8 +53,8 @@ def job_scheduling(
         #
         # If right == -1, it means no previous job ends before the current job
         # starts. In this case, there is no profit from a previous job that can
-        # be added to the current job's profit.  
-        # 
+        # be added to the current job's profit.
+        #
         # If right != -1, it means we
         # found a valid job that does not overlap with the current job. Thus, we
         # can safely add the profit of this job (max_profits[right]) to the
