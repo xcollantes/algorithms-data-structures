@@ -41,6 +41,11 @@ def search(target: int, A: list[int]) -> int:
         # 3. If the target is either lower or higher than the mid, then shift the
         # left and right indices to focus on a subsection of the array.
 
+        # This is why we want to have a sorted array before starting since we'll
+        # have a direction where the target element is given the "current"
+        # location.
+        # This is the downside of binary search.
+
         # If the mid index is the value, then return index and finish search.
         if target == A[mid]:
             return mid
