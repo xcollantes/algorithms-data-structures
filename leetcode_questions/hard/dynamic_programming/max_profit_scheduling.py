@@ -37,6 +37,15 @@ def job_scheduling(
 
         # Find latest job that doesn't conflict with current job.
         left = 0
+        # This is closing in on the jobs before the current job to find the max
+        # profitable job that is lined up before the current job.
+        #
+        #       job2_start.....end          job4_start.....end
+        # job1_start.......end    job3_start.....end
+        # ------------------------------------------------------
+        # L                      R i
+        #
+        # If job3 was i, then L is earliest job and R is the job before i.
         right = i - 1
         # Where the right job starts less than or exactly when previous job
         # ends.
@@ -59,6 +68,8 @@ def job_scheduling(
         # found a valid job that does not overlap with the current job. Thus, we
         # can safely add the profit of this job (max_profits[right]) to the
         # current job's profit.
+        #
+        # The right index is the job that we have found.
         if right != -1:
             current_profit += max_profits[right]
 
