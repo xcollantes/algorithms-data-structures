@@ -38,7 +38,7 @@ def faster_avg(nums: list[int], k: int) -> list[int]:
 
     for idx in range(len(nums)):
         window_sum += nums[idx]
-        if idx - window_size >= 0:
+        if idx >= window_size:
             # Move the window forward by removing the first value in the array
             window_sum -= nums[idx - window_size]
 
