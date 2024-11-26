@@ -16,10 +16,15 @@ from collections import deque
 
 
 def basic_calculator(s: str) -> int:
+    # Track current number built up per digit.
+    # This is done by adding each digit multiplied by 10 which represents the
+    # next digit place.
     curr: int = 0
     op: str = "+"
     stack = deque()
 
+    # Append "+" to the string since we need an operator to trigger the last
+    # operation.
     for e in s + "+":
         if e.isdigit():
             curr = (curr * 10) + int(e)
@@ -32,9 +37,13 @@ def basic_calculator(s: str) -> int:
             elif op == "*":
                 stack.append(stack.pop() * curr)
             elif op == "/":
+                # Using Python floor division to round to lower integer.
                 stack.append(stack.pop() // curr)
 
+            # Reset the operator to the current operator after using the
+            # previous operator.
             op = e
+            # Reset the current number since we just used the number.
             curr = 0
 
     return sum(stack)
