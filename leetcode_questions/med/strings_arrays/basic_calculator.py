@@ -16,9 +16,6 @@ from collections import deque
 
 
 def basic_calculator(s: str) -> int:
-    # iterate each char
-    ## If op, then calculate
-    ## If digit, then store
     curr: int = 0
     op: str = "+"
     stack = deque()
