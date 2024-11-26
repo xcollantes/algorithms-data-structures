@@ -56,7 +56,8 @@ def avg_window_optimized(nums: list[int], k: int) -> float:
 
     for front_idx in range(1, len(nums) - k + 1):
         # Track sum
-        window_sum = window_sum - nums[front_idx - 1] + nums[front_idx + k - 1]
+        window_sum += nums[front_idx + k - 1]
+        window_sum -= nums[front_idx - 1]
         answer = max(window_sum, answer)
 
     # Perform division operation at end
