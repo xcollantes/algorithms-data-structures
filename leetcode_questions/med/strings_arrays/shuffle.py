@@ -9,36 +9,39 @@ int[] shuffle() Returns a random shuffling of the array.
 """
 
 import copy
-import logging
 import random
 
 
 class Shuffle:
     def __init__(self, nums: list[int]) -> None:
+        # Track original version with O(1) time complexity.
         self.nums = nums
-        # Technically a shallow copy works since nums is single dimensional
-        self.const_nums = copy.deepcopy(nums)
+
+        # Make sure to use deep copy since the values might still be attached to
+        # original data structure.
+        self.ORIGINAL = copy.deepcopy(nums)
+
+        # Track position since Fisher-Yates algorithm depends on moving index
+        # for each "shuffle" call.
+        self.position = 0
 
     def reset(self) -> list[int]:
-        """Resets the array to its original configuration and returns it."""
+        self.nums = self.ORIGINAL
         return self.nums
 
-    # This technically works but could possibly repeat.
-    #
-    # def shuffle(self) -> list[int]:
-    #     """Returns a random shuffling of the array."""
-    #     return random.sample(self.nums, len(self.nums))
-
     def shuffle(self) -> list[int]:
-        """Returns a random shuffling of the array.
+        # Fisher-Yates algorithm chooses a random index and a moving index.
+        # The random index and moving index switch values to create a random
+        # value each time but a new random set each call.
 
-        Uses the Fisher-Yates algorithm.
-        """
-        answer: list[int] = self.nums[:]  # Shallow copy
-        for idx in range(len(answer)):
-            logging.info(answer)
-            rand_idx = random.randrange(idx, len(answer))
-            logging.info(rand_idx)
-            answer[rand_idx], answer[idx] = answer[idx], answer[rand_idx]
+        random_idx: int = random.randint(
+            self.position, len(self.nums) - 1
+        )  # - 1 since random includes right value.
 
-        return answer
+        # Switch the random index and moving index.
+        self.nums[random_idx], self.nums[self.position] = (
+            self.nums[self.position],
+            self.nums[random_idx],
+        )
+
+        return self.nums

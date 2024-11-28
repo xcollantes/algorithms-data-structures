@@ -1,25 +1,26 @@
 """Unit test for shuffle.py."""
 
 import unittest
-import logging
 
 from leetcode_questions.med.strings_arrays.shuffle import Shuffle
-
-logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class TestShuffle(unittest.TestCase):
     def test_shuffle(self):
+        prev = []
         a = [1, 2, 3]
+        ORIGINAL = a[:]
         s = Shuffle(a)
 
-        prev = []
-        x = s.shuffle()
-        prev.append(x)
-        self.assertNotEqual(x, a)
+        first = s.shuffle()
+        prev.append(tuple(first))
+        print(s.nums)
+        self.assertNotIn(first, prev)
 
-        self.assertEqual(s.reset(), a)
+        self.assertEqual(s.reset(), ORIGINAL)
+        print(s.nums)
 
-        i = s.shuffle()
-        prev.append(i)
-        self.assertNotIn(a, prev)
+        second = s.shuffle()
+        print(s.nums)
+        prev.append(tuple(second))
+        self.assertNotIn(second, prev)
