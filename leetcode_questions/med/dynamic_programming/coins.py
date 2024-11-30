@@ -1,7 +1,12 @@
-"""
-You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+"""322. Coin Change
 
-Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+Medium
+
+You are given an integer array coins representing coins of different
+denominations and an integer amount representing a total amount of money.
+
+Return the fewest number of coins that you need to make up that amount. If that
+amount of money cannot be made up by any combination of the coins, return -1.
 
 You may assume that you have an infinite number of each kind of coin.
 """
@@ -17,8 +22,8 @@ def coin(coins: list[int], amount: int) -> int:
 
     min_coins[0] = 0
 
-    # Each value is the number of coins needed for that index
-    # So index 1 needs 1 coin assuming 1 coin is an option in the coins options
+    # Each value is the number of coins needed for that index So index 1 needs 1
+    # coin assuming 1 coin is an option in the coins options
     for idx in range(len(min_coins)):
         logging.info("IDX: %s", idx)
         for coin in coins:
@@ -28,8 +33,8 @@ def coin(coins: list[int], amount: int) -> int:
                     " new min: %s", min(min_coins[idx], min_coins[idx - coin] + 1)
                 )
 
-                # Refer back to the idx - coin then add 1 coin;
-                # Iterate the coins until you get min number of coins
+                # Refer back to the idx - coin then add 1 coin; Iterate the
+                # coins until you get min number of coins
                 min_coins[idx] = min(min_coins[idx], min_coins[idx - coin] + 1)
 
                 logging.info(" min_coins: %s", min_coins)
