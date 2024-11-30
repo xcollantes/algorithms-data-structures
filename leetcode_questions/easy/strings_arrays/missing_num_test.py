@@ -1,8 +1,19 @@
-"""Unit test for missing_num.py."""
+"""Unit test for missing_num.py.
+
+268. Missing Number
+
+Find missing number.
+
+Given an array nums containing n distinct numbers in the range [0, n], return
+the only number in the range that is missing from the array.
+"""
 
 import unittest
 
-from leetcode_questions.missing_num import missing_num, optimized_missing_num
+from leetcode_questions.easy.strings_arrays.missing_num import (
+    missing_num,
+    optimized_missing_num,
+)
 
 
 class TestMissing(unittest.TestCase):
