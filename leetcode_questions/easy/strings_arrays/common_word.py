@@ -1,4 +1,5 @@
-"""
+"""819. Most Common Word
+
 Given a string paragraph and a string array of the banned words banned, return
 the most frequent word that is not banned. It is guaranteed there is at least
 one word that is not banned, and that the answer is unique.
@@ -11,13 +12,17 @@ import re
 
 
 def most_common_word(paragraph: str, banned: list[str]) -> str:
-    words = re.split("\W+", paragraph)
+    # Split and clean.
+    words = re.findall("\w+", paragraph.lower())
 
-    cleaned: list = []
+    # Track counts.
+    wc: dict[str, int] = {}
+
+    # Iterate O(n).
     for word in words:
-        w: str = word.lower().strip()
+        # Filter out banned.
+        if word not in banned:
+            wc[word] = wc.get(word, 0) + 1
 
-        if w not in banned and w != "":
-            cleaned.append(w)
-
-    return max(cleaned, key=cleaned.count)
+    # Return lowercase.
+    return max(wc, key=lambda x: wc[x])
