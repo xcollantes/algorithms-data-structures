@@ -1,4 +1,5 @@
-"""
+"""71. Simplify Path
+
 Given a string path, which is an absolute path (starting with a slash '/') to a
 file or directory in a Unix-style file system, convert it to the simplified
 canonical path.
@@ -22,12 +23,13 @@ Return the simplified canonical path.
 
 
 def path(path: str) -> str:
-    """Simplify path."""
+    # Track.
     tokens = path.split("/")
-
     files = []
+
     for token in tokens:
         # The .. will go up one
+        # Check if files has contents since .. can't go up one if empty.
         if files and token == "..":
             files.pop()
 
