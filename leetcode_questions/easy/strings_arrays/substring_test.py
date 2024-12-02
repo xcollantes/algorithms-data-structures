@@ -1,11 +1,27 @@
-"""Unit test for substring.py."""
+"""Unit test for substring.py.
+
+392. Is Subsequence
+
+Given two strings s and t, return true if s is a subsequence of t, or false
+otherwise.
+
+A subsequence of a string is a new string that is formed from the original
+string by deleting some (can be none) of the characters without disturbing the
+relative positions of the remaining characters. (i.e., "ace" is a subsequence of
+"abcde" while "aec" is not).
+
+Example 1:
+
+Input: s = "abc", t = "ahbgdc"
+Output: true
+Example 2:
+
+Input: s = "axc", t = "ahbgdc"
+Output: false
+"""
 
 import unittest
-import logging
-
 from leetcode_questions.easy.strings_arrays.substring import is_subsequence
-
-logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class TestSubstring(unittest.TestCase):
