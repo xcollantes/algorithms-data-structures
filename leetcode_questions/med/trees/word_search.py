@@ -1,7 +1,11 @@
-"""
-Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+"""79. Word Search
 
-The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+Given an m x n grid of characters board and a string word, return true if word
+exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cells, where
+adjacent cells are horizontally or vertically neighboring. The same letter cell
+may not be used more than once.
 """
 
 import logging
@@ -32,32 +36,34 @@ class WordSearch:
         if len(word) <= 0:
             return True
 
-        # Check for boundaries
-        # Return False if outside the limits of the board
+        # Check for boundaries Return False if outside the limits of the board.
         if (
             row < 0
             or row == self.max_rows
             or col < 0
             or col == self.max_cols
-            # Check the first letter which gets "shaved" off for every call of `__search()`
-            # This case is incase you find a letter you're not currently looking
-            # for.
+            # Check the first letter which gets "shaved" off for every call of
+            # `__search()` This case is incase you find a letter you're not
+            # currently looking for.
             or self.board[row][col] != word[0]
         ):
             return False
 
         revert = False
+
+        # Mark as "visited" so the above case will skip the letter.
         self.board[row][col] = "#"
 
-        # Look at each neighbor: up, down, left, right
+        # Look at each neighbor: up, down, left, right.
         for row_offset, col_offset in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-            # Add offsets and move to next letter
+            # Add offsets and move to next letter.
             revert = self.__search(row + row_offset, col + col_offset, word[1:])
 
-            # Case where no matches found
+            # Case where no matches found.
             if revert:
                 break
 
+        # Replace the letter that works you were working on.
         self.board[row][col] = word[0]
 
         return revert
