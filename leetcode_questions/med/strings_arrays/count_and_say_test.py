@@ -1,11 +1,29 @@
-"""Unit test for count_and_say.py."""
+"""Unit test for count_and_say.py.
 
-import logging
+38. Count and Say
+
+Run-length encoding (RLE) is a string compression method that works by
+replacing consecutive identical characters (repeated 2 or more times) with the
+concatenation of the character and the number marking the count of the
+characters (length of the run).
+
+For example, to compress the string "3322251" we
+replace "33" with "23", replace "222" with "32", replace "5" with "15" and
+replace "1" with "11". Thus the compressed string becomes "23321511".
+
+Given a positive integer n, return the nth element of the count-and-say
+sequence.
+
+The confusing part is that you have to perform the RLE on the result of the
+previous function call.
+"""
+
 import unittest
 
-from leetcode_questions.med.strings_arrays.count_and_say import countAndSay, countAndSayIterative
-
-logging.basicConfig(level=logging.INFO, format="%(message)s")
+from leetcode_questions.med.strings_arrays.count_and_say import (
+    countAndSay,
+    countAndSayIterative,
+)
 
 
 class TestCountAndSay(unittest.TestCase):
