@@ -6,6 +6,12 @@ k is non-negative.
 
 
 def rotate(nums: list[int], k: int) -> list[int]:
+    # For when k > len(nums).
+    k = k % len(nums)
+
+    if k <= 0:
+        return nums
+
     # Track.
     # We know how big the result will be.
     result = [0] * len(nums)
@@ -31,7 +37,7 @@ def rotate_group(nums: list[int], k: int) -> list[int]:
     k = k % len(nums)
 
     print(f"k after mod: {k}")
-    if k != 0:  # For 0 k values.
+    if k > 0:  # For 0 k values.
 
         # Array sections can be replaced if they are the same length.
         #
