@@ -1,11 +1,14 @@
-"""Unit test for rotate_array.py."""
+"""Unit test for rotate_array.py.
+
+189. Rotate Array
+
+Given an integer array nums, rotate the array to the right by k steps, where
+k is non-negative.
+"""
 
 import unittest
-import logging
 
 from leetcode_questions.med.strings_arrays.rotate_array import rotate, rotate_group
-
-logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class TestRotateArray(unittest.TestCase):
