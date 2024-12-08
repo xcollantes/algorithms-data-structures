@@ -59,57 +59,6 @@ my_dict["second"] = "age"
 my_dict["third"]  # Returns "Not found"
 ```
 
-## deque
-
-Used for Stack data structure.
-
-```python
-from collections import deque
-
-def reverse_words_deque(sentence: str) -> list[str]:
-    """Use deque library."""
-    stack: deque = deque(sentence.split(" "))
-
-    result: list[str] = []
-    while len(stack) > 0:
-        result.append(stack.pop())
-
-    print(result)
-    return result
-```
-
-## Queue
-
-Practically the same as deque except used for managing Threads.
-
-Threads run within a Process.
-
-```python
-import queue
-import threading
-import time
-
-q = queue.Queue()
-
-def my_thread():
-    while True:
-        item = q.get()
-        print(f"start: {item}")
-        time.sleep(2)
-        print(f"end: {item}")
-        q.task_done()
-
-t = threading.Thread(target=my_thread, daemon=True)
-t.start()
-
-for item in ["hello", 10, 99, 200]:
-    q.put(item)
-
-# Threads wait until all are done
-q.join()
-print("ALL DONE")
-```
-
 ## max
 
 Get maximum value in a data.
@@ -149,55 +98,4 @@ sequential number for each tuple.
 a = ['h', 'l', 'l', 'o']
 [i for i in enumerate(a)]
 # [(0, 'h'), (1, 'l'), (2, 'l'), (3, 'o')]
-```
-
-## Shallow vs Deep copy
-
-Shallow creates a new instance in memory for one level deep only.
-
-In this example, `list()` will create a shallow copy where the object is copied
-non-recursively. For this use case, it works since the object is one dimension
-anyway.
-
-```python
-a = [0, 1, 2, 3]
-b = a
-c = list(a)
-
-a[0] = 9
-
-print(a)  # [9, 1, 2, 3]
-print(b)  # [9, 1, 2, 3]
-print(c)  # [0, 1, 2, 3]
-```
-
-In this example, a shallow copy is created but the object is 2 dimensional so
-the change in `a` also affects `c`.
-
-```python
-a = [[0, 1], [2, 3]]
-b = a
-c = list(a)
-
-a[0][0] = 9
-
-print(a)  # [[9, 1], [2, 3]]
-print(b)  # [[9, 1], [2, 3]]
-print(c)  # [[9, 1], [2, 3]]
-```
-
-Deep copy creates a new instance with recursive copy in memory.
-
-```python
-import copy
-
-a = [[0, 1], [2, 3]]
-b = a
-c = copy.deepcopy(a)
-
-a[0][0] = 9
-
-print(a)  # [[9, 1], [2, 3]]
-print(b)  # [[9, 1], [2, 3]]
-print(c)  # [[0, 1], [2, 3]]
 ```
