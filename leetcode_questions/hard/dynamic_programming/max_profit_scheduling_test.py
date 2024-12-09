@@ -24,12 +24,16 @@ from leetcode_questions.hard.dynamic_programming.max_profit_scheduling import (
 
 class TestMaxProfitScheduling(unittest.TestCase):
     def test_max_profit_scheduling(self):
+        # Image: https://assets.leetcode.com/uploads/2019/10/10/sample1_1584.png
+        # images/sample1_1584.png
         self.assertEqual(
             job_scheduling(
                 start_time=[1, 2, 3, 3], end_time=[3, 4, 5, 6], profit=[50, 10, 40, 70]
             ),
             120,
         )
+
+        # images/sample2_1584.png
         self.assertEqual(
             job_scheduling(
                 start_time=[1, 2, 3, 4, 6],
@@ -38,6 +42,8 @@ class TestMaxProfitScheduling(unittest.TestCase):
             ),
             150,
         )
+
+        # images/sample22_1584.png
         self.assertEqual(
             job_scheduling(start_time=[1, 1, 1], end_time=[2, 3, 4], profit=[5, 6, 4]),
             6,
