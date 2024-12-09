@@ -1,4 +1,4 @@
-"""Maximum Profit in Job Scheduling.
+"""1235. Maximum Profit in Job Scheduling
 
 We have n jobs, where every job is scheduled to be done from start_time[i] to
 end_time[i], obtaining a profit of profit[i].
