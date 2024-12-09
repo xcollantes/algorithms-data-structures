@@ -1,11 +1,16 @@
-"""Unit test for reorganize_string.py."""
+"""Unit test for reorganize_string.py.
+
+767. Reorganize String
+
+Given a string s, rearrange the characters of s so that any two adjacent
+characters are not the same.
+
+Return any possible rearrangement of s or return "" if not possible.
+
+https://leetcode.com/problems/reorganize-string/description
+"""
 
 import unittest
-import logging
-
-from leetcode_questions.med.hash.reorganize_string import reorganize_string
-
-logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class TestReorganizeString(unittest.TestCase):
