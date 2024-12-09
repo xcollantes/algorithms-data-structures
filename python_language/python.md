@@ -36,29 +36,6 @@ Python 257: Doc string conversions
 - **February 20, 1991:** Python 0.9.0, the first public release, emerges. It
   focuses on code readability and simplicity.
 
-## defaultdict
-
-Same as the Python Dictionary but never returns `KeyError`.
-
-Without `defaultdict`:
-
-```python
-my_dict = {"first": "name", "second": "age"}
-my_dict["third"]  # KeyError
-```
-
-With `defaultdict`:
-
-```python
-from collections import defaultdict
-
-my_dict = defaultdict(lambda: "Not found")
-my_dict["first"] = "name"
-my_dict["second"] = "age"
-
-my_dict["third"]  # Returns "Not found"
-```
-
 ## max
 
 Get maximum value in a data.
