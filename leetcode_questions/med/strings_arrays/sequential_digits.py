@@ -91,14 +91,21 @@ class LeetcodeSolution:
         result = []
 
         for left in range(len(nums)):
+
+            # Right is always right of left.
+            # Max limit is 1 after len since right is exclusive when used in
+            # array subsection.
             for right in range(left + 1, len(nums) + 1):
                 print(f"left: {left}; right: {right}")
 
+                # Convert to int for comparisons.
                 current = int(nums[left:right])
                 print(f"    current: {current}")
 
+                # Is within the limits.
                 if low <= current <= high:
                     result.append(current)
 
+        # Sort since generation will be [12, 123, ..., 23, 234, ...].
         print(sorted(result))
         return sorted(result)
