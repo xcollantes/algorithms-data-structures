@@ -15,6 +15,7 @@ from leetcode_questions.med.dynamic_programming.generate_parens import (
 
 class TestGenerateParens(unittest.TestCase):
     def test_generate_parens(self):
+        self.assertEqual(sorted(generateParenthesis(2)), sorted(["(())", "()()"]))
         self.assertEqual(
             sorted(generateParenthesis(3)),
             sorted(["((()))", "(()())", "(())()", "()(())", "()()()"]),
