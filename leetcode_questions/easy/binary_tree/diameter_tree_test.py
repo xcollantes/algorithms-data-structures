@@ -18,13 +18,16 @@ The number of nodes in the tree is in the range [1, 104].
 
 import unittest
 
-from leetcode_questions.easy.binary_tree.diameter_tree import diameter_binary_tree
+from leetcode_questions.easy.binary_tree.diameter_tree import Solution
 
 
 class TestDiameterTree(unittest.TestCase):
     def test_diameter_tree(self):
 
-        # Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
-        self.assertEqual(diameter_binary_tree([1, 2, 3, 4, 5]), 3)
+        s1 = Solution()
+        s2 = Solution()
 
-        self.assertEqual(diameter_binary_tree([1, 2]), 1)
+        # Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+        self.assertEqual(s1.diameter_binary_tree([1, 2, 3, 4, 5]), 3)
+
+        self.assertEqual(s2.diameter_binary_tree([1, 2]), 1)
