@@ -31,6 +31,9 @@ def max_swap(num: int) -> int:
     print(pos)
 
     # Create a dict of the last of each digit to easily compare later.
+    #
+    # This takes care of duplicated digits since only the last index is
+    # recorded.
     # {digit: last position index}
     last_pos = {}
     for i, d in enumerate(pos):
@@ -48,7 +51,8 @@ def max_swap(num: int) -> int:
 
             # If we find a digit in our dict which is larger, then replace.
             # We return right away since we only have one swap.
-            if last_pos.get(d, -1) > i:
+            last_index = last_pos.get(d, -1)
+            if last_index > i:
                 pos[i], pos[last_pos[d]] = pos[last_pos[d]], pos[i]
                 return int("".join(pos))
 
