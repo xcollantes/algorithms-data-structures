@@ -41,6 +41,7 @@ Constraints:
 s[i] is either '(' , ')', or lowercase English letter.
 """
 
+
 def min_parens(s: str) -> str:
     # Turn into list as list can have "deletes" where you make the element "".
     s = list(s)
@@ -75,12 +76,3 @@ def min_parens(s: str) -> str:
         s[i] = ""
 
     return "".join(s)
-
-
-
-
-
-
-
-
-
