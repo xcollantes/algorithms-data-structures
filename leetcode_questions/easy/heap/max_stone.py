@@ -41,6 +41,8 @@ Constraints:
 
 
 def max_stone(stones: list[int]) -> int:
+    # Solution does not use Heap.
+
     stones.sort()
     print(stones)
 
