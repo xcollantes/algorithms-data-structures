@@ -49,3 +49,4 @@ class TestPeak(unittest.TestCase):
     def cases(self, fn) -> None:
         self.assertIn(fn([1, 2, 3, 1]), [1, 2])
         self.assertIn(fn([1, 2, 1, 3, 5, 6, 4]), [1, 4, 5])
+        self.assertIn(fn([1]), [0])
