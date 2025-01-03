@@ -19,4 +19,3 @@ for each element or `O(n**2)`.
 Heap will split the problem into a binary tree so the time complexity goes to
 `O(n * log n)` since you iterate once per element but then each subsequent
 iteration is split from the original iteration method.
-h
