@@ -83,7 +83,7 @@ def recursive(s: list[int], left: int, right: int, target: int) -> int:
         return None
 
 
-def recursive_partitions(s: list[int], target: int) -> int:
+def recursive_partitions(s: list[int], target: int) -> bool:
     """Recursive approach passing in partitions.
 
     Instead of the whole array, partitions of the array are passed in. There is
@@ -95,20 +95,23 @@ def recursive_partitions(s: list[int], target: int) -> int:
 
     # Base case where not found.
     if not s:
-        return None
+        return False
 
     mid = len(s) // 2
 
     print(f"mid: {mid}")
 
     if s[mid] == target:
-        return s[mid]
+        return True
 
     elif target < s[mid]:
         return recursive_partitions(s[:mid], target=target)
 
     elif s[mid] < target:
-        return recursive_partitions(s[mid:], target=target)
+
+        # Add one since we don't want to include the actual mid value which is
+        # the first value when slicing.
+        return recursive_partitions(s[mid + 1 :], target=target)
 
 
 class Test(unittest.TestCase):
@@ -128,6 +131,7 @@ class Test(unittest.TestCase):
 
     def test_partitions(self) -> None:
         # Cannot return the index but the value instead.
-        self.assertEqual(recursive_partitions(self.A, 20), 20)
-        self.assertEqual(recursive_partitions(self.A, 10), 10)
-        self.assertEqual(recursive_partitions(self.A, 40), None)
+        self.assertTrue(recursive_partitions(self.A, 20), 20)
+        self.assertTrue(recursive_partitions(self.A, 10), 10)
+
+        self.assertFalse(recursive_partitions(self.A, 40))
