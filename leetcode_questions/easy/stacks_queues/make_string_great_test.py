@@ -3,7 +3,7 @@
 import unittest
 import logging
 
-from leetcode_questions.easy.strings_arrays.make_string_great import make_great
+from leetcode_questions.easy.stacks_queues.make_string_great import make_great
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
