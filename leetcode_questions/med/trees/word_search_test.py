@@ -59,3 +59,21 @@ class TestWordSearch(unittest.TestCase):
                 word="ABCB",
             ),
         )
+        z = WordSearch(
+            board=[
+                [
+                    ["A", "A", "A", "A", "A", "A"],
+                    ["A", "A", "A", "A", "A", "A"],
+                    ["A", "A", "A", "A", "A", "A"],
+                    ["A", "A", "A", "A", "A", "A"],
+                    ["A", "A", "A", "A", "A", "A"],
+                    ["A", "A", "A", "A", "A", "A"],
+                ]
+            ],
+        )
+
+        self.assertFalse(
+            z.word_search(
+                word="AAAAAAAAAAAAAAB",
+            ),
+        )
