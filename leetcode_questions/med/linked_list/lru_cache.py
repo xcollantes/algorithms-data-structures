@@ -62,7 +62,6 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.size = 0
 
         # Key to Node will make accessing fast since no need to iterate through the linked list.
         # Essential since we will be rewiring the pointers between the nodes.
@@ -70,14 +69,14 @@ class LRUCache:
 
         # Actual values are self.head + 1 node.
         # Head of linked list is Least Recently Used node.
-        self.head = Node(-1, 1)
+        self.head = Node(-1, None)
 
         self.tail = self.head
 
     def get(self, key: int) -> int:
         print(f"GET: {key} from {self.cache.keys()}")
 
-        if self.cache.get(key, None):
+        if key in self.cache:
             # Mark the node value as accessed.
             self.move_used(self.cache[key])
 
@@ -105,8 +104,8 @@ class LRUCache:
             self.cache[key] = new_node
 
             self.tail.next = new_node
-
             new_node.prev = self.tail
+
             self.tail = new_node
 
             print(f"Added to cache hashmap {self.cache.keys()}")
@@ -117,15 +116,19 @@ class LRUCache:
                 print(f"Capacity reached on {self.cache.keys()}")
 
                 del_node: Node = self.head.next
-                new_head: Node = del_node.next
 
-                new_head.prev = del_node.prev
+                new_head: Node = del_node.next
 
                 self.head.next = new_head
                 new_head.prev = self.head
 
-                print(f"Deleted node from cache and node deleted: {del_node.key}")
+                new_head.next = del_node.next
+                del_node.next.prev = new_head
+
                 del self.cache[del_node.key]
+
+                print(f"Deleted node from cache and node deleted: {del_node.key}")
+
 
     def move_used(self, curr_node: Node) -> None:
         """Take recently accessed node and move to the end.
