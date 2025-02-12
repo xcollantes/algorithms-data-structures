@@ -122,13 +122,9 @@ class LRUCache:
                 self.head.next = new_head
                 new_head.prev = self.head
 
-                new_head.next = del_node.next
-                del_node.next.prev = new_head
-
                 del self.cache[del_node.key]
 
                 print(f"Deleted node from cache and node deleted: {del_node.key}")
-
 
     def move_used(self, curr_node: Node) -> None:
         """Take recently accessed node and move to the end.
@@ -143,8 +139,8 @@ class LRUCache:
         prev_node: Node = curr_node.prev
 
         # Rearrange pointers to skip current node.
-        next_node.prev = curr_node.prev
-        prev_node.next = curr_node.next
+        next_node.prev = prev_node
+        prev_node.next = next_node
 
         # Move recently used node to end.
         self.tail.next = curr_node
