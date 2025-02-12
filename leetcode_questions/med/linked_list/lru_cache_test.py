@@ -56,6 +56,11 @@ from leetcode_questions.med.linked_list.sam_lru_cache import LRUCache as Sam
 class TestLruCache(unittest.TestCase):
 
     def cases(self, fn: Callable):
+        self.case1(fn)
+        self.case2(fn)
+
+    def case1(self, fn: Callable):
+        print("CASE 1")
         lru_cache = fn(2)
         lru_cache.put(1, 1)  # cache is {1=1}
         lru_cache.put(2, 2)  # cache is {1=1, 2=2}
@@ -66,6 +71,12 @@ class TestLruCache(unittest.TestCase):
         self.assertEqual(lru_cache.get(1), -1)  # return -1 (not found)
         self.assertEqual(lru_cache.get(3), 3)
         self.assertEqual(lru_cache.get(4), 4)
+
+    def case2(self, fn: Callable):
+        print("CASE 2")
+        lru_cache = fn(1)
+        lru_cache.put(2, 1)
+        self.assertEqual(lru_cache.get(2), 1)
 
 
 class TestLru(TestLruCache):
