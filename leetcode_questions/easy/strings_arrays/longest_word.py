@@ -4,9 +4,13 @@ characters.
 
 """
 
-import logging
 
-logging.basicConfig(level=logging.INFO)
+def test_length_of_longest_substring():
+    """pytest longest_word.py"""
+    assert length_of_longest_substring("abcabcbb") == 3  # "abc"
+    assert length_of_longest_substring("pwwke") == 3  # "wke"
+    assert length_of_longest_substring("bbbbbbbbb") == 1  # "b"
+    assert length_of_longest_substring("dvdf") == 3  # "dvdf"
 
 
 def length_of_longest_substring(s: str) -> int:
