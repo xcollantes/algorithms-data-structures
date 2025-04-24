@@ -40,6 +40,17 @@ s consists only of printable ASCII characters.
 """
 
 
+def test_palindrome():
+    """pytest palindrome.py"""
+    assert is_palindrome("A man, a plan, a canal: Panama") == True
+    assert is_palindrome(" ") == True
+    assert is_palindrome(".,") == True
+
+    assert is_palindrome("race a car") == False
+    assert is_palindrome("          hello") == False
+    assert is_palindrome("not a palindrome") == False
+
+
 def is_palindrome(s: str) -> bool:
     left = 0
     right = len(s) - 1
@@ -60,16 +71,3 @@ def is_palindrome(s: str) -> bool:
         right -= 1
 
     return True
-
-
-# pytest palindrome.py
-
-
-def test_palindrome():
-    assert is_palindrome("A man, a plan, a canal: Panama") == True
-    assert is_palindrome(" ") == True
-    assert is_palindrome(".,") == True
-
-    assert is_palindrome("race a car") == False
-    assert is_palindrome("          hello") == False
-    assert is_palindrome("not a palindrome") == False
