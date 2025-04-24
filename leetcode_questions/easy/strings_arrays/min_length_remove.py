@@ -56,7 +56,7 @@ def minLength(s: str) -> int:
     return len(stack)
 
 
-# pytest test_min_length_remove.py
+# pytest min_length_remove.py
 
 
 def test_minLength_example_cases():
