@@ -60,3 +60,16 @@ def is_palindrome(s: str) -> bool:
         right -= 1
 
     return True
+
+
+# pytest palindrome.py
+
+
+def test_palindrome():
+    assert is_palindrome("A man, a plan, a canal: Panama") == True
+    assert is_palindrome(" ") == True
+    assert is_palindrome(".,") == True
+
+    assert is_palindrome("race a car") == False
+    assert is_palindrome("          hello") == False
+    assert is_palindrome("not a palindrome") == False

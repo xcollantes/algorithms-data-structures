@@ -44,5 +44,9 @@ def remove_element(nums: list[int], val: int) -> int:
     return current
 
 
-print(remove_element(nums=[3, 2, 2, 3], val=3))
-print(remove_element(nums=[0, 1, 2, 2, 3, 0, 4, 2], val=2))
+# pytest remove_element.py
+
+
+def test_remove_element():
+    assert remove_element(nums=[3, 2, 2, 3], val=3) == 2
+    assert remove_element(nums=[0, 1, 2, 2, 3, 0, 4, 2], val=2) == 5

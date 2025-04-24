@@ -45,3 +45,17 @@ def is_subsequence_alt(s: str, t: str) -> bool:
         t_ptr += 1
 
     return s_ptr == len(s)
+
+
+# pytest substring.py
+
+
+def test_substring():
+    assert is_subsequence(s="abc", t="ahbgdc") == True
+    assert is_subsequence(s="", t="ahbgdc") == True
+    assert is_subsequence(s="u", t="u") == True
+    assert is_subsequence(s="aaaabbbb", t="aaaabvbbbbb") == True
+
+    assert is_subsequence(s="axc", t="ahbgdc") == False
+    assert is_subsequence(s="axc", t="") == False
+    assert is_subsequence(s="xxxxx", t="awopeirjspps") == False

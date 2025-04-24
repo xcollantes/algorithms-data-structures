@@ -38,3 +38,20 @@ def faster_two_sums(array: list[int], target: int) -> list[int]:
         comp_map[array[i]] = i
 
     return []
+
+
+# pytest two_sums.py
+
+
+def cases(fn):
+    assert fn([1, 2], 3) == [0, 1]
+    assert fn([2, 3, 5, 14, 543, 23], 25) == [0, 5]
+    assert fn([56, 345, 0, 2, 4, 5], 2) == [2, 3]
+
+
+def test_twosums():
+    cases(two_sums)
+
+
+def test_faster_two_sums():
+    cases(faster_two_sums)

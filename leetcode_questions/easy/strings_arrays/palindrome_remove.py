@@ -61,3 +61,13 @@ def valid_palindrome(s: str) -> bool:
                 or s[left + 1 : right + 1] == s[left + 1 : right + 1][::-1]
             )
     return True
+
+
+# pytest palindrome_remove.py
+
+
+def test_palindrome_remove():
+    assert valid_palindrome("aba") == True
+    assert valid_palindrome("abca") == True
+    assert valid_palindrome("abc") == False
+    assert valid_palindrome("abcdefedgcba") == True

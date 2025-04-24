@@ -37,12 +37,4 @@ from leetcode_questions.easy.strings_arrays.palindrome_remove import valid_palin
 
 
 class TestPalindromeRemove(unittest.TestCase):
-    def test_palindrome_remove(self):
-        self.assertEqual(valid_palindrome("aba"), True)
-        print()
-        self.assertEqual(valid_palindrome("abca"), True)
-        print()
-        self.assertEqual(valid_palindrome("abc"), False)
-        print()
-        self.assertEqual(valid_palindrome("abcdefedgcba"), True)
-        print()
+    
