@@ -14,6 +14,14 @@ as mathematical expressions, such as eval().
 
 from collections import deque
 
+# pytest basic_calculator.py
+
+
+def test_basic_calculator():
+    assert basic_calculator("3+2*2") == 7
+    assert basic_calculator(" 3/2 ") == 1
+    assert basic_calculator(" 3+5 / 2 ") == 5
+
 
 def basic_calculator(s: str) -> int:
     # Track current number built up per digit.
