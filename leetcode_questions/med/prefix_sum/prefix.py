@@ -28,6 +28,13 @@ Constraints:
 """
 
 
+def test_subarray_sum():
+    # self.assertEqual(subarray_sum([1, 1, 1], 2), 2)
+    self.assertEqual(subarray_sum([1, 2, 3], 3), 2)
+    self.assertEqual(subarray_sum([1, 2, 3, -1, 1], 3), 3)
+    # self.assertEqual(subarray_sum([-1, -1, 1], 0), 1)
+
+
 def subarray_sum(nums: list[int], k: int) -> int:
 
     count = 0
