@@ -20,6 +20,21 @@ For example, the average of four elements 2, 3, 1, and 5 is (2 + 3 + 1 + 5) / 4
 import logging
 
 
+def test_avg_center():
+    cases(avg_center)
+
+
+def test_faster():
+    cases(faster_avg)
+
+
+def cases(fn):
+    assert fn([2, 1, 3, 1, 0, 2, 1], 2) == [-1, -1, 1, 1, 1, -1, -1]
+    assert fn([7, 4, 3, 9, 1, 8, 5, 2, 6], 3) == [-1, -1, -1, 5, 4, 4, -1, -1, -1]
+    assert fn([100000], 0) == [100000]
+    assert fn([8], 100000) == [-1]
+
+
 def avg_center(nums: list[int], k: int) -> list[int]:
     """Return list of averages."""
     result: list[int] = [-1 for _ in range(len(nums))]
