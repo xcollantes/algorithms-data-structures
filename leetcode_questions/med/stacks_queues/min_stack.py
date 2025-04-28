@@ -47,12 +47,9 @@ class MinStack:
         self.values = []
 
     def push(self, val: int) -> None:
-        self.values.append(val)
-
         if self.mins:
             self.mins.append(min(self.getMin(), val))
-        else:
-            self.mins.append(val)
+        self.mins.append(val)
 
         print(f"push: {val} m: {self.mins} v: {self.values}")
 
