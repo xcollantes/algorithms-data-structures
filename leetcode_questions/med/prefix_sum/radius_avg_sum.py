@@ -63,7 +63,7 @@ def avg_sum(nums: list[int], k: int) -> list[int]:
      0 1   3 4   6   8
                    s
     [7,4,3,9,1,8,5,2,6]
-                   i
+                 i
 
     [-1,-1,-1,5,4,4,-1,-1,-1]
 
@@ -77,16 +77,19 @@ def avg_sum(nums: list[int], k: int) -> list[int]:
     scope = (k * 2) + 1
 
     for i in range(len(nums)):
+        print(f"  add {nums[i]}")
         window_sum += nums[i]
 
         # 2 different cases since the offset
-        # Once at the window size, 
+        # Once at the window size, subtract first element.
         if i >= scope:
             print(f"  sub {nums[i - scope]}")
             window_sum -= nums[i - scope]
 
+        # Start calculating result 1 before the scope because if you start on
+        # the scope, the last element is never calculated.
         if i >= scope - 1:
-            print(f"  result pos {i - k - 1}")
+            print(f"  result {window_sum // scope} at {i - k}")
             result[i - k] = window_sum // scope
 
         print(f"  result {result}")
