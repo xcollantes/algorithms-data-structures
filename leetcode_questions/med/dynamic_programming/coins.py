@@ -14,6 +14,12 @@ You may assume that you have an infinite number of each kind of coin.
 import logging
 
 
+def test_coins():
+    assert coin([1, 2, 5], 11) == 3
+    assert coin([2], 3) == -1
+    assert coin([1], 0) == 0
+
+
 def coin(coins: list[int], amount: int) -> int:
     """Return fewest of each coin to make amount."""
     # Create array of min coins to make each index
