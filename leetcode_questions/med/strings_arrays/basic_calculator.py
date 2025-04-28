@@ -12,6 +12,7 @@ Note: You are not allowed to use any built-in function which evaluates strings
 as mathematical expressions, such as eval().
 """
 
+import math
 from collections import deque
 
 # pytest basic_calculator.py
@@ -21,6 +22,7 @@ def test_basic_calculator():
     assert basic_calculator("3+2*2") == 7
     assert basic_calculator(" 3/2 ") == 1
     assert basic_calculator(" 3+5 / 2 ") == 5
+    assert basic_calculator("14-3/2") == 13
 
 
 def basic_calculator(s: str) -> int:
@@ -46,7 +48,9 @@ def basic_calculator(s: str) -> int:
                 stack.append(stack.pop() * curr)
             elif op == "/":
                 # Using Python floor division to round to lower integer.
-                stack.append(stack.pop() // curr)
+                # Must use truncate for negative values since the floor in
+                # negative is actually the ceiling.
+                stack.append(math.trunc(stack.pop() / curr))
 
             # Reset the operator to the current operator after using the
             # previous operator.
