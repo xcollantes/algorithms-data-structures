@@ -59,6 +59,24 @@ my_dict["second"] = "age"
 my_dict["third"]  # Returns "Not found"
 ```
 
+## setdefault
+
+Always returns the insert value. Adds value to dict if not already added.
+
+If the key exists, return value. If key does not exists, append and return
+value.
+
+```python
+my_dict = {"a": 12, "b": 200, "c": 800}
+value = my_dict.setdefault("a", 55)
+print(my_dict)  # {"a": 12, "b": 200, "c": 800}
+print(value)  # 12
+
+value = my_dict.setdefault("z", 1111)
+print(my_dict)  # {"a": 12, "b": 200, "c": 800, "z": 1111}
+print(value)  # 55
+```
+
 ## deque
 
 Used for Stack data structure.
