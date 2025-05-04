@@ -8,11 +8,9 @@ adjacent cells are horizontally or vertically neighboring. The same letter cell
 may not be used more than once.
 """
 
-import logging
-
 
 class WordSearch:
-    def __init__(self, board) -> None:
+    def __init__(self, board: list[list[str]]) -> None:
         self.board = board
         self.max_rows = len(board)
         self.max_cols = len(board[0])
@@ -29,8 +27,8 @@ class WordSearch:
 
     def __search(self, row: int, col: int, word: str) -> bool:
         """Recursively find word."""
-        logging.info("SEARCH: %s", word)
-        logging.info(self.board)
+        print("SEARCH: ", word)
+        print(self.board)
 
         # Base case where word has been found
         if len(word) <= 0:
@@ -67,3 +65,56 @@ class WordSearch:
         self.board[row][col] = word[0]
 
         return revert
+
+
+def test_word_search():
+    """pytest word_search.py."""
+    w = WordSearch(
+        board=[
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"],
+        ],
+    )
+
+    assert w.word_search(
+        word="ABCCED",
+    )
+
+    x = WordSearch(
+        board=[
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"],
+        ],
+    )
+    assert x.word_search(
+        word="SEE",
+    )
+
+    y = WordSearch(
+        board=[
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"],
+        ],
+    )
+    assert not y.word_search(
+        word="ABCB",
+    )
+    z = WordSearch(
+        board=[
+            [
+                ["A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A"],
+            ]
+        ],
+    )
+
+    assert not z.word_search(
+        word="AAAAAAAAAAAAAAB",
+    )
