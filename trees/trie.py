@@ -20,67 +20,113 @@ Input:
     trie.starts_with("bat") # returns False
 """
 
+
 class Trie:
-    def __init__(self):
-        # Initialize the root as an empty dictionary
+
+    def __init__(self) -> None:
         self.root = {}
-        # Special character to mark the end of a word
-        self.end_symbol = '*'
+        self.ending_char = "#"
 
     def insert(self, word: str) -> None:
-        """
-        Inserts a word into the trie.
-        """
-        node = self.root
-        for char in word:
-            if char not in node:
-                node[char] = {}
-            node = node[char]
-        # Mark the end of a word
-        node[self.end_symbol] = True
+        cur = self.root
+
+        for letter in word:
+            if not letter in cur:
+                cur[letter] = {}
+
+            cur = cur[letter]
+
+        cur["#"] = word
 
     def search(self, word: str) -> bool:
-        """
-        Returns True if the word is in the trie, otherwise False.
-        """
-        node = self.root
-        for char in word:
-            if char not in node:
-                return False
-            node = node[char]
-        # Check if the word is marked as complete
-        return self.end_symbol in node
+        cur = self.root
+        for letter in word + "#":
+            print(f"letter: {letter} cur: {cur}")
 
-    def starts_with(self, prefix: str) -> bool:
-        """
-        Returns True if there is any word in the trie that starts with the given prefix.
-        """
-        node = self.root
-        for char in prefix:
-            if char not in node:
+            if not letter in cur:
+                print(f"NOT FOUND: {letter} in {word}")
                 return False
-            node = node[char]
+
+            if cur.get("#") == word:
+                return True
+
+            cur = cur[letter]
+
+        return False
+
+    def starts_with(self, s: str) -> bool:
+        cur = self.root
+        for letter in s:
+
+            if not letter in cur:
+                return False
+
+            cur = cur[letter]
+
         return True
 
 
-# Example usage
+import pytest
+
+
+@pytest.fixture
+def setup_trie():
+    """Setup function that creates and returns a Trie with test data."""
+    trie = Trie()
+    words = ["apple", "app", "approach", "boy", "book"]
+    for word in words:
+        trie.insert(word)
+    return trie
+
+
+def test_search(setup_trie):
+    """pytest trie.py."""
+    trie = setup_trie
+
+    assert trie.search("apple") == True
+    assert trie.search("app") == True
+    assert trie.search("apples") == False
+    assert trie.search("boy") == True
+    assert trie.search("alphabet") == False
+
+
+def test_starts_with(setup_trie):
+    """pytest trie.py."""
+    trie = setup_trie
+
+    assert trie.starts_with("app") == True
+    assert trie.starts_with("bo") == True
+    assert trie.starts_with("bat") == False
+
+
 if __name__ == "__main__":
     trie = Trie()
 
     # Insert words
-    words = ["apple", "app", "approach", "boy", "book"]
+    words: list[str] = ["apple", "app", "approach", "boy", "book"]
     for word in words:
         trie.insert(word)
 
     # Search for words
-    print(f"Search 'apple': {trie.search('apple')}")        # True
-    print(f"Search 'app': {trie.search('app')}")            # True
-    print(f"Search 'apples': {trie.search('apples')}")      # False
-    print(f"Search 'boy': {trie.search('boy')}")            # True
+    print(f"Search 'apple': {trie.search('apple')}")  # True
+    print(f"Search 'app': {trie.search('app')}")  # True
+    print(f"Search 'apples': {trie.search('apples')}")  # False
+    print(f"Search 'boy': {trie.search('boy')}")  # True
     print(f"Search 'alphabet': {trie.search('alphabet')}")  # False
 
     # Check prefixes
-    print(f"Prefix 'app': {trie.starts_with('app')}")       # True
-    print(f"Prefix 'bo': {trie.starts_with('bo')}")         # True
-    print(f"Prefix 'bat': {trie.starts_with('bat')}")       # False
+    print(f"Prefix 'app': {trie.starts_with('app')}")  # True
+    print(f"Prefix 'bo': {trie.starts_with('bo')}")  # True
+    print(f"Prefix 'bat': {trie.starts_with('bat')}")  # False
 
+    # Search for words
+    print(f"Search 'apple': {trie.search('apple')}")  # True
+    print(f"Search 'app': {trie.search('app')}")  # True
+    print(f"Search 'apples': {trie.search('apples')}")  # False
+    print(f"Search 'boy': {trie.search('boy')}")  # True
+    print(f"Search 'alphabet': {trie.search('alphabet')}")  # False
+
+    # Check prefixes
+    print(f"Prefix 'app': {trie.starts_with('app')}")  # True
+    print(f"Prefix 'bo': {trie.starts_with('bo')}")  # True
+    print(f"Prefix 'bat': {trie.starts_with('bat')}")  # False
