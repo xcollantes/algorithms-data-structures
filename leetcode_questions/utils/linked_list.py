@@ -9,15 +9,17 @@ class ListNode:
         self.next = next
 
 
-def create_linked_list(arr: Any):
+def create_linked_list(arr: list[Any]):
     """Initiate singly-linked list."""
     head = ListNode(arr[0])
-    for i in range(1, len(arr) - 1):
-        head.next = ListNode(arr[i])
+    cur = head
+    for i in range(1, len(arr)):
+        cur.next = ListNode(arr[i])
+        cur = cur.next
     return head
 
 
-def p(head: ListNode):
+def pp(head: ListNode):
     """Read linked list."""
     while head:
         print(f"{head.val} -> ", end="")
