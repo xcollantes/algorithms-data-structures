@@ -43,3 +43,12 @@ Parent of i: `i // 2`
 
 Given the image above, the left child of 15 is `= 2 * 3` where 3 is the array
 index. So the left child is at index 6 where value is 12.
+
+This works because the structure increases twice you move down the tree. In the
+same way that traversing an array with two pointers: one at slow or +1 and one
+at fast or +2, where when fast reaches the end of the array, slow will be at the
+middle of the end or where fast is located.
+
+So in the same way, since the tree is doubling at every level, the array is
+filled up given the formulas with the ancestors of the tree as the array fills
+up.
