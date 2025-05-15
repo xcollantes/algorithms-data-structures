@@ -33,32 +33,51 @@ def test_palindrome_linked_list():
     # assert is_palindrome(create_linked_list([1])) == True
 
 
-def is_palindrome(head: ListNode):
-    # reverse the linked list.
-    print(f"original")
-    pp(head)
+def is_palindrome(head: ListNode) -> ListNode:
 
-    p = None  # Start with None since new tail will point to None.
-    c = head
+    def reverse(head: ListNode):
+        """Reverse the linked list."""
 
-    while c:
-        # 1. n is treated as a temp node.
-        # c will be disconnected to next node so n keeps where c will be.
-        n = c.next
+        p = None  # Start with None since new tail will point to None.
+        c = head
 
-        # 2. Wire next to the prev.
-        c.next = p
+        while c:
+            # 1. n is treated as a temp node.
+            # c will be disconnected to next node so n keeps where c will be.
+            n = c.next
 
-        # 3. Increment prev to +1.
-        p = c
+            # 2. Wire next to the prev.
+            c.next = p
 
-        # 4. Move current node to next.
-        c = n
+            # 3. Increment prev to +1.
+            p = c
 
-    # Prev is now the new head since the list is singly linked and reversed.
-    # Starting from a fixed head from beginning will have nowhere to go.
+            # 4. Move current node to next.
+            c = n
 
-    head = p
-    pp(head)
+        # Prev is now the new head since the list is singly linked and reversed.
+        # Starting from a fixed head from beginning will have nowhere to go.
+
+        pp(p)
+        return p
 
     # traverse both the original and reversed.
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    rev = reverse(slow)
+
+    while rev:
+        print(f"h: {head.val} rev: {rev.val}")
+        if head.val != rev.val:
+            return False
+
+        head = head.next
+        rev = rev.next
+
+    return True
+
