@@ -79,10 +79,22 @@ def target_sum(nums: list[int], target: int) -> int:
                 # We explore both the addition and subtraction.
                 #
                 # At some point, the iteration will end at the last of nums.
+                #      (0, 0)
+                #     /      \
+                # +1 /        \ -1
+                # (1, 1)     (1, -1)
+                #
+                # (2, 2) from +1
+                # (2, 0) from -1
+
                 addition = dfs(i + 1, total + nums[i])
                 subtraction = dfs(i + 1, total - nums[i])
+
+                print(f"result {addition} + {subtraction}")
+
                 d[key] = addition + subtraction
 
+        print(f"return {d[key]}")
         return d[key]
 
     return dfs(0, 0)
