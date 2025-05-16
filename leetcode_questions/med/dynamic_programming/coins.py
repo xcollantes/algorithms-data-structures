@@ -26,17 +26,26 @@ def coin(coins: list[int], amount: int) -> int:
 
     min_coins[0] = 0
 
-    # Each value is the number of coins needed for that index So index 1 needs 1
-    # coin assuming 1 coin is an option in the coins options
+    # Each value is the number of coins needed for that index
+    # So index 1 needs 1 coin assuming 1 coin is an option in the coins options
     for idx in range(len(min_coins)):
         print(f"IDX: {idx}")
+
         for coin in coins:
+
             if coin <= idx:
                 print(f" coin {coin} is smaller than idx {idx}")
                 print(f" new min: {min(min_coins[idx], min_coins[idx - coin] + 1)}")
 
                 # Refer back to the idx - coin then add 1 coin; Iterate the
                 # coins until you get min number of coins
+                # Think of the `idx - coin` as ONE COIN away from current index
+                # Then when largest coin is reached, cycle restarts with only
+                # ONE coin required for that index
+
+                # `idx - coin` is looking back at previous value minus the
+                # current coin. So adding the current coin will give the index
+                # value which is the required number of coins.
                 min_coins[idx] = min(min_coins[idx], min_coins[idx - coin] + 1)
 
                 print(f" min_coins: {min_coins}")
