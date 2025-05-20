@@ -55,78 +55,57 @@ def test_min_substring():
 
 def min_substring(s: str, target: str) -> str:
     """"""
-    print(f"s {s} t {target}")
 
-    # check if valid
     if len(s) < len(target):
         return ""
 
-    # Track the count of each character in the target string.
-    ch_count = defaultdict(int)
-    for ch in target:
-        ch_count[ch] += 1
+    # get count dict so we decrease as we find new chars.
+    # chars we care about will be 0 if found; chars we don't care about will be
+    # < 0.
+    ch_counts = defaultdict(int)
+    for c in target:
+        ch_counts[c] += 1
 
-    print(f"count ch in t for easy tracking: ch_count: {ch_count}")
+    req = len(target)
 
-    # Needed since we want to find the min window size.
-    # Starting with infinitely, any window we find will be smaller.
-    #
-    target_ch_remain = len(target)
-    min_window = (0, float("inf"))
-    print(f"min window: {min_window}")
-    start_i = 0
+    min_window = (0, len(s) + 1)
+    start = 0
 
-    for end_i in range(len(s)):
+    # iterate left to right
+    for end in range(len(s)):
         print(s)
-        print(f"{' ' * (start_i)}x")
-        print(f"{' ' * (end_i)}y")
+        print(f"{' ' * start}x")
+        print(f"{' ' * (end - 1)}y")
+        print(f"start {start} end {end} {ch_counts}")
 
-        # print(f"check if cur ch still looking for: {s[end_i]}")
-        if ch_count[s[end_i]] > 0:
-            print(f"found {s[end_i]}")
+        if ch_counts[s[end]] > 0:
+            print(f"found {s[end]}")
+            req -= 1
 
-            target_ch_remain -= 1
+        # chars we don't care about will be < 0.
+        ch_counts[s[end]] -= 1
 
-        ch_count[s[end_i]] -= 1
-        print(f"target str remaining: {target_ch_remain} {ch_count}")
+        # shrink when all target letters found.
+        if req == 0:
+            # shrink left to right.
+            # if required letter is removed, break.
+            # we can tell char is required because required chars are 0 at this
+            # point.
+            while ch_counts[s[start]] != 0:
+                ch_counts[s[start]] += 1  # This is undoing the subtraction above.
+                start += 1
 
-        # Shrink window.
-        if target_ch_remain == 0:
-            print(f"no target chars remaining: {target_ch_remain}")
+            # get new smaller window.
+            if end - start < min_window[1] - min_window[0]:
+                min_window = (start, end)
 
-            # Start from left side to shrink current window.
-            while True:
-                print(f"shrink from left side until invalid: {s[start_i: end_i]} {start_i} {end_i}")
-                print(f"ch_count: {ch_count}")
+            ch_counts[s[start]] += 1
+            start += 1
+            req += 1
 
-                char_at_start = s[start_i]
+    print(f"result min_window: {min_window}")
 
-                # If ch_count is disrupted, then we can't remove.
-                # Zero is the required counts and non-required is less than
-                # zero.
-                if ch_count[char_at_start] == 0:
-                    break
-
-                ch_count[char_at_start] += 1
-                start_i += 1  # Move left ptr right-ward.
-
-            print(f"found break: {start_i} {end_i}")
-
-            print(f"min: {min_window}")
-            # Update min window.
-            # If the current positions of end and start are smaller than the
-            # currently stored end and start, then replace.
-            if end_i - start_i < min_window[1] - min_window[0]:
-                min_window = (start_i, end_i)
-
-            # Prepare for next window.
-            ch_count[s[start_i]] += 1
-            target_ch_remain += 1
-            start_i += 1
-
-        print()
-
-    print(f"end min: {min_window}")
-
-    # If no valid window found, check if min_window is still at infinity.
-    return "" if min_window[1] > len(s) else s[min_window[0] : min_window[1] + 1]
+    # check if length of min_window changed; return "" if unchanged.
+    if min_window[1] > len(s):
+        return ""
+    return s[min_window[0] : min_window[1] + 1]
