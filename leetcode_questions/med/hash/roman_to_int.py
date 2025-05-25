@@ -78,23 +78,26 @@ Constraints:
 """
 
 
-def test_roman_to_int():
+def test_into_to_roman():
     """pytest to_int.py"""
-    assert roman_to_int(3749) == "MMMDCCXLIX"
-    assert roman_to_int(58) == "LVIII"
-    assert roman_to_int(1994) == "MCMXCIV"
-    assert roman_to_int(3999) == "MMMCMXCIX"
+    assert int_to_roman(3749) == "MMMDCCXLIX"
+    assert int_to_roman(58) == "LVIII"
+    assert int_to_roman(1994) == "MCMXCIV"
+    assert int_to_roman(3999) == "MMMCMXCIX"
 
 
-def roman_to_int(num: int) -> str:
+def int_to_roman(num: int) -> str:
     """Iterate over the possible values.
 
     O(12) or O(1), simplified.
 
     Symbols are the possible cases and we don't have to consider the triple for
-    M, C, because the upper constraint is 3999 so the highest is MMMCMXCIX.
+    M, C, X, I, because the upper constraint is 3999 so the highest is
+    MMMCMXCIX. 
     """
 
+    # Symbols MUST be sorted since we're subtracting from nums using the largest
+    # symbols first.
     symbols = {
         "I": 1,
         "V": 5,
