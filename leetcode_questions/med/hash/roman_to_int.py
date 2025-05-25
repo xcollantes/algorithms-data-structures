@@ -93,7 +93,7 @@ def int_to_roman(num: int) -> str:
 
     Symbols are the possible cases and we don't have to consider the triple for
     M, C, X, I, because the upper constraint is 3999 so the highest is
-    MMMCMXCIX. 
+    MMMCMXCIX.
     """
 
     # Symbols MUST be sorted since we're subtracting from nums using the largest
@@ -129,7 +129,9 @@ def int_to_roman(num: int) -> str:
         rem = num % v
 
         # Remove converted part from the number still to calculate.
-        num = num - (div * v)
+        
+        # num = num - (div * v)  # Same logic.
+        num = rem
 
         r.append(div * k)  # Append SYMBOL with duplicates to result.
 
