@@ -50,3 +50,15 @@ def string_eval(s: str) -> int:
             operator = ch
 
     return sum(sum_stack)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.CALCULATOR, Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

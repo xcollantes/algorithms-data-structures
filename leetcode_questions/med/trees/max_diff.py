@@ -27,3 +27,15 @@ def diff(root: Node, min_val: int, max_val: int) -> int:
     # Recursive case or "on the way up" finds the biggest difference between the
     # two nodes
     return max(diff(root.left, min_val, max_val), diff(root.right, min_val, max_val))
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.TREE, Tags.DFS],
+    difficulty=Difficulty.MEDIUM,
+)

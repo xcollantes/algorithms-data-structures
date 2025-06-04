@@ -59,3 +59,15 @@ def basic_calculator(s: str) -> int:
             curr = 0
 
     return sum(stack)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.CALCULATOR, Tags.STRING, Tags.STACK],
+    difficulty=Difficulty.MEDIUM,
+)

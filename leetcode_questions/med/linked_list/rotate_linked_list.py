@@ -126,4 +126,13 @@ def p(h: ListNode):
         h = h.next
 
 
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
 
+__metadata__ = Metadata(
+    tags=[Tags.LINKED_LIST, Tags.TWO_POINTERS],
+    difficulty=Difficulty.MEDIUM,
+)

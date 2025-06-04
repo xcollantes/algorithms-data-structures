@@ -55,3 +55,15 @@ def test_twosums():
 
 def test_faster_two_sums():
     cases(faster_two_sums)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.HASH_TABLE, Tags.TWO_POINTERS],
+    difficulty=Difficulty.EASY,
+)

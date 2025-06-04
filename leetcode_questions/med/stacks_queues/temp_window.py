@@ -18,3 +18,15 @@ def daily_temps(temps: list[int]) -> list[int]:
         stack.append(idx)
 
     return answer
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK, Tags.ARRAY],
+    difficulty=Difficulty.MEDIUM,
+)

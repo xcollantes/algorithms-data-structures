@@ -83,3 +83,15 @@ def word_abbr(word: str, abbr: str) -> bool:
             a += 1
 
     return w == len(word) and a == len(abbr)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING, Tags.TWO_POINTERS],
+    difficulty=Difficulty.EASY,
+)

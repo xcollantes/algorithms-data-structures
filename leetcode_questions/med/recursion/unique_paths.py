@@ -89,3 +89,15 @@ def unique_paths(obstacleGrid: list[list[int]]) -> int:
 
     # Always start from top-left corner.
     return dfs(0, 0)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.RECURSION, Tags.DYNAMIC_PROGRAMMING, Tags.MATRIX, Tags.DFS],
+    difficulty=Difficulty.MEDIUM,
+)

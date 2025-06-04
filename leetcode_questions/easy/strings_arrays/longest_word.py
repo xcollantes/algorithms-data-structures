@@ -30,3 +30,15 @@ def length_of_longest_substring(s: str) -> int:
             max_length = max(max_length, right - left + 1)
 
     return max_length
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.STRING, Tags.SORTING],
+    difficulty=Difficulty.EASY,
+)

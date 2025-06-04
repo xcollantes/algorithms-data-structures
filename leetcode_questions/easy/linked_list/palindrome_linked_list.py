@@ -81,3 +81,14 @@ def is_palindrome(head: ListNode) -> ListNode:
 
     return True
 
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.LINKED_LIST, Tags.TWO_POINTERS, Tags.STACK, Tags.PALINDROME],
+    difficulty=Difficulty.EASY,
+)

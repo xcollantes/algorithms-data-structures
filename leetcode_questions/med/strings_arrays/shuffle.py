@@ -47,3 +47,15 @@ class Shuffle:
             )
 
         return self.nums
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.SHUFFLE],
+    difficulty=Difficulty.MEDIUM,
+)

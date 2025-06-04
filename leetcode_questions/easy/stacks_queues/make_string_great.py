@@ -28,3 +28,15 @@ def make_great(s: str) -> str:
             stack.append(s[idx])
 
     return "".join(stack)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK, Tags.STRING],
+    difficulty=Difficulty.EASY,
+)

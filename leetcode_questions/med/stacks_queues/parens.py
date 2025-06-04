@@ -42,3 +42,15 @@ def valid_parens(s: str) -> bool:
     if left_stack:
         return False
     return True
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK, Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

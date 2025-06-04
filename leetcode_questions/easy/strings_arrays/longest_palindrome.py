@@ -32,3 +32,15 @@ def is_palindrome(s: str) -> bool:
             return False
 
     return True
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HASH_TABLE, Tags.STRING, Tags.GREEDY, Tags.PALINDROME],
+    difficulty=Difficulty.EASY,
+)

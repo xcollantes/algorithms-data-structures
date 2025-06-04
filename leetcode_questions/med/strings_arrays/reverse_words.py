@@ -24,3 +24,15 @@ def reverse_words(s: str) -> str:
         answer.append(current_word)
 
     return " ".join(answer[::-1])
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

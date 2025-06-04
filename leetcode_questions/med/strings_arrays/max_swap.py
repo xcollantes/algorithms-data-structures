@@ -37,7 +37,7 @@ def max_swap(num: int) -> int:
     # {digit: last position index}
     last_pos = {}
     for i, d in enumerate(pos):
-       last_pos[int(d)] = i
+        last_pos[int(d)] = i
 
     print(last_pos)
 
@@ -60,3 +60,13 @@ def max_swap(num: int) -> int:
     return num
 
 
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

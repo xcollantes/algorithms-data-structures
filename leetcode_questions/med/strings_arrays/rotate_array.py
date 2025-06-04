@@ -52,3 +52,15 @@ def rotate_group(nums: list[int], k: int) -> list[int]:
 
 
 print(rotate_group(nums=[1, 2, 3, 4, 5, 6, 7], k=3))
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.ROTATION],
+    difficulty=Difficulty.MEDIUM,
+)
