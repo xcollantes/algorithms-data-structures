@@ -52,9 +52,19 @@ Explanation:
 
 
 def test_avg_sum():
-    assert avg_sum([7,4,3,9,1,8,5,2,6], k = 3) == [-1,-1,-1,5,4,4,-1,-1,-1]
-    assert avg_sum([100000], k = 0) == [100000]
-    assert avg_sum([8], k = 100000) == [-1]
+    assert avg_sum([7, 4, 3, 9, 1, 8, 5, 2, 6], k=3) == [
+        -1,
+        -1,
+        -1,
+        5,
+        4,
+        4,
+        -1,
+        -1,
+        -1,
+    ]
+    assert avg_sum([100000], k=0) == [100000]
+    assert avg_sum([8], k=100000) == [-1]
 
 
 def avg_sum(nums: list[int], k: int) -> list[int]:
@@ -97,3 +107,13 @@ def avg_sum(nums: list[int], k: int) -> list[int]:
     return result
 
 
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.PREFIX_SUM],
+    difficulty=Difficulty.MEDIUM,
+)

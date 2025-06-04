@@ -38,3 +38,15 @@ class StockSpan:
         self.stack.append((price, span))
 
         return span
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK],
+    difficulty=Difficulty.MEDIUM,
+)

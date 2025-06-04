@@ -54,3 +54,15 @@ def is_valid(s: str) -> bool:
         return True
 
     return False
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK, Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

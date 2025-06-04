@@ -10,3 +10,15 @@ surrounded by water.
 
 def islands(grid: list[list[str]]) -> int:
     """Return number of islands."""
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.MATRIX, Tags.DFS],
+    difficulty=Difficulty.MEDIUM,
+)

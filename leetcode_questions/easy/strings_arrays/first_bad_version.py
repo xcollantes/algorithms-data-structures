@@ -76,3 +76,15 @@ def _evaluate(fn, n, bad):
         mock_isBadVersion.side_effect = mock_implementation
 
         assert fn(n) == bad
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.BINARY_SEARCH, Tags.SEARCH],
+    difficulty=Difficulty.EASY,
+)

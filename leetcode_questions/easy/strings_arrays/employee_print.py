@@ -91,3 +91,15 @@ employee_print(
         (7, 8, "Emp7"),
     ]
 )
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.TREE, Tags.DFS, Tags.BFS],
+    difficulty=Difficulty.EASY,
+)

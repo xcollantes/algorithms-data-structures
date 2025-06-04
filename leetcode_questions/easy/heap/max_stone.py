@@ -57,3 +57,15 @@ def max_stone(stones: list[int]) -> int:
         print(f"compare {first} and {second} -> {stones}")
 
     return stones[0]
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HEAP, Tags.ARRAY, Tags.SORTING],
+    difficulty=Difficulty.EASY,
+)
