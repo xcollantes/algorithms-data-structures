@@ -28,6 +28,7 @@ class Solution:
     def __init__(self) -> None:
         self.dia = 0
 
+
     def diameter_binary_tree(self, root: TreeNode) -> int:
         self.depth(root)
         return self.dia
@@ -49,13 +50,3 @@ class Solution:
         return max(left, right) + 1
 
 
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.BINARY_TREE, Tags.DFS, Tags.TREE],
-    difficulty=Difficulty.EASY,
-)

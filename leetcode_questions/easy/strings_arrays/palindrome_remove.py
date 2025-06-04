@@ -71,15 +71,3 @@ def test_palindrome_remove():
     assert valid_palindrome("abca") == True
     assert valid_palindrome("abc") == False
     assert valid_palindrome("abcdefedgcba") == True
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STRING, Tags.TWO_POINTERS, Tags.PALINDROME],
-    difficulty=Difficulty.EASY,
-)

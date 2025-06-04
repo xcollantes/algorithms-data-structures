@@ -85,15 +85,3 @@ def test_design_stack():
     minStack.pop()
     assert minStack.top() == 0
     assert minStack.getMin() == -2
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STACK, Tags.DESIGN],
-    difficulty=Difficulty.MEDIUM,
-)

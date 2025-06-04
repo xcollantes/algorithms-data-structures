@@ -76,15 +76,3 @@ def min_parens(s: str) -> str:
         s[i] = ""
 
     return "".join(s)
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STACK, Tags.STRING],
-    difficulty=Difficulty.MEDIUM,
-)

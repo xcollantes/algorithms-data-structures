@@ -78,15 +78,3 @@ def job_scheduling(
         max_profits[i] = max(max_profits[i - 1], current_profit)
 
     return max_profits[-1]
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.ARRAY, Tags.SORTING, Tags.BINARY_SEARCH],
-    difficulty=Difficulty.HARD,
-)

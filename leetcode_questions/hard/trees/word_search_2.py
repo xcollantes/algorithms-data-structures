@@ -127,15 +127,3 @@ def test_two():
     board = [["a", "b"], ["c", "d"]]
     words = ["abcb"]
     assert word_search_2(board, words) == []
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.TRIE, Tags.BACKTRACKING, Tags.MATRIX, Tags.STRING],
-    difficulty=Difficulty.HARD,
-)

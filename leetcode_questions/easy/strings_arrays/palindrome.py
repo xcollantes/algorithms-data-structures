@@ -71,15 +71,3 @@ def is_palindrome(s: str) -> bool:
         right -= 1
 
     return True
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STRING, Tags.TWO_POINTERS, Tags.PALINDROME],
-    difficulty=Difficulty.EASY,
-)

@@ -59,15 +59,3 @@ def test_substring():
     assert is_subsequence(s="axc", t="ahbgdc") == False
     assert is_subsequence(s="axc", t="") == False
     assert is_subsequence(s="xxxxx", t="awopeirjspps") == False
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.ARRAY, Tags.TWO_POINTERS, Tags.STRING],
-    difficulty=Difficulty.EASY,
-)

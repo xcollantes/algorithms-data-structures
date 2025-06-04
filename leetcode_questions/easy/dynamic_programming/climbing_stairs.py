@@ -24,15 +24,3 @@ def climb(n: int) -> int:
         logging.info("  count_ways: %s", count_ways)
 
     return count_ways[-1]
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.MATH],
-    difficulty=Difficulty.EASY,
-)

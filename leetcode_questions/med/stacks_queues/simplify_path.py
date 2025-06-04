@@ -38,15 +38,3 @@ def path(path: str) -> str:
             files.append(token)
 
     return "/" + "/".join(files)
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STACK, Tags.STRING],
-    difficulty=Difficulty.MEDIUM,
-)

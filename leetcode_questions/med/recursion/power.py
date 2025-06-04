@@ -67,15 +67,3 @@ def _pow(base: float, ex: int) -> float:
 
         print(f"return: {result}")
         return result
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.MATH, Tags.RECURSION],
-    difficulty=Difficulty.MEDIUM,
-)

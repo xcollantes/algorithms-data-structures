@@ -70,15 +70,3 @@ def mergeTwoLists(
         list2 = list2.next
 
     return result_head.next
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.LINKED_LIST, Tags.SORTING, Tags.PALINDROME],
-    difficulty=Difficulty.EASY,
-)

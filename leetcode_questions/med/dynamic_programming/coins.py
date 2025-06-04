@@ -57,15 +57,3 @@ def coin(coins: list[int], amount: int) -> int:
     # Return the amount-th index which is the number of coins needed for that
     # amount index
     return min_coins[amount]
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.ARRAY],
-    difficulty=Difficulty.MEDIUM,
-)

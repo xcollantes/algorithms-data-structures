@@ -55,15 +55,3 @@ def reorganize_string(s: str) -> str:
             i += 2
 
     return "".join(result)
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.HASH_TABLE, Tags.STRING, Tags.SORTING],
-    difficulty=Difficulty.MEDIUM,
-)

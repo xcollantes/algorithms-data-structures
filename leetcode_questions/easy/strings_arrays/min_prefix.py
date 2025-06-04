@@ -65,15 +65,3 @@ def min_prefix(strs: list[str]) -> str:
         compare = compare[:i]
 
     return compare
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STRING, Tags.TRIE],
-    difficulty=Difficulty.EASY,
-)

@@ -109,15 +109,3 @@ class LeetcodeSolution:
         # Sort since generation will be [12, 123, ..., 23, 234, ...].
         print(sorted(result))
         return sorted(result)
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STRING, Tags.BACKTRACKING, Tags.MATH],
-    difficulty=Difficulty.MEDIUM,
-)

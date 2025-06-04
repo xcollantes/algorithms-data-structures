@@ -28,15 +28,3 @@ def _key(order: list[str], letter: str) -> str:
         return 0
 
     return order.index(letter)
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.SORTING, Tags.STRING],
-    difficulty=Difficulty.MEDIUM,
-)

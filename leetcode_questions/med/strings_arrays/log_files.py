@@ -61,15 +61,3 @@ def custom_sort(log: str) -> tuple:
 
 def reorder_optimal(logs: list[str]) -> list[str]:
     return sorted(logs, key=custom_sort)  # key= creates an ID to sort by.
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.SORTING, Tags.STRING],
-    difficulty=Difficulty.MEDIUM,
-)

@@ -58,15 +58,3 @@ def move_zeros(nums: list[int]) -> None:
         if nums[r] != 0:
             nums[l], nums[r] = nums[r], nums[l]
             l += 1
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.ARRAY, Tags.TWO_POINTERS, Tags.COUNTING],
-    difficulty=Difficulty.EASY,
-)

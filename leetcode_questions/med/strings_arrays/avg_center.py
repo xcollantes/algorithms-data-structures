@@ -63,15 +63,3 @@ def faster_avg(nums: list[int], k: int) -> list[int]:
             result[idx - k] = window_sum // window_size
 
     return result
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.ARRAY, Tags.SLIDING_WINDOW],
-    difficulty=Difficulty.MEDIUM,
-)

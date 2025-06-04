@@ -50,15 +50,3 @@ def remove_element(nums: list[int], val: int) -> int:
 def test_remove_element():
     assert remove_element(nums=[3, 2, 2, 3], val=3) == 2
     assert remove_element(nums=[0, 1, 2, 2, 3, 0, 4, 2], val=2) == 5
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.ARRAY, Tags.TWO_POINTERS, Tags.COUNTING],
-    difficulty=Difficulty.EASY,
-)

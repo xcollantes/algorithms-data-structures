@@ -52,15 +52,3 @@ def generateParenthesis(n: int) -> list[str]:
 
     # Once all valid combinations have been explored and added to `result`, return it
     return result
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.STRING],
-    difficulty=Difficulty.MEDIUM,
-)

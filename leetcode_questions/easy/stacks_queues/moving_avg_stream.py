@@ -30,15 +30,3 @@ class MovingAvg:
         self.sum += val
 
         return self.sum / self.length
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.QUEUE, Tags.DESIGN],
-    difficulty=Difficulty.EASY,
-)

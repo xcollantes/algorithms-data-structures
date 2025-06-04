@@ -80,15 +80,3 @@ def test_minLength_mixed_cases():
     assert minLength("AXBYCZDX") == 8
     # Complex case with multiple removals
     assert minLength("ABCACDBABD") == 0
-
-
-from leetcode_questions.utils.models.leetcode_data_models import (
-    Difficulty,
-    Metadata,
-    Tags,
-)
-
-__metadata__ = Metadata(
-    tags=[Tags.STRING, Tags.STACK],
-    difficulty=Difficulty.EASY,
-)
