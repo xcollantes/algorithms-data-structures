@@ -45,3 +45,15 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.min_stack[-1]
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STACK],
+    difficulty=Difficulty.MEDIUM,
+)
