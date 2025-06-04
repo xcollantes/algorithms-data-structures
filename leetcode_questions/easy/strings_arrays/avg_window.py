@@ -62,3 +62,15 @@ def avg_window_optimized(nums: list[int], k: int) -> float:
 
     # Perform division operation at end
     return answer / k
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.SLIDING_WINDOW],
+    difficulty=Difficulty.EASY,
+)

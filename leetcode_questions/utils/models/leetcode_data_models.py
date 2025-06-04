@@ -14,6 +14,7 @@ class Tags(Enum):
     ARRAY = "array"
     BACKTRACKING = "backtracking"
     BFS = "bfs"
+    BINARY = "binary"
     BINARY_SEARCH = "binary search"
     BINARY_SEARCH_TREE = "binary search tree"
     BINARY_TREE = "binary tree"
@@ -24,6 +25,7 @@ class Tags(Enum):
     DFS = "dfs"
     DYNAMIC_PROGRAMMING = "dynamic programming"
     GRAPH = "graph"
+    GREEDY = "greedy"
     HASH_TABLE = "hash table"
     HEAP = "heap"
     LINKED_LIST = "linked list"
@@ -31,6 +33,8 @@ class Tags(Enum):
     MATRIX = "matrix"
     MAZE = "maze"
     MEMOIZATION = "memoization"
+    PALINDROME = "palindrome"
+    PREFIX_SUM = "prefix sum"
     QUEUE = "queue"
     RECURSION = "recursion"
     SEARCH = "search"
@@ -43,7 +47,6 @@ class Tags(Enum):
     TREE = "tree"
     TWO_POINTERS = "two pointers"
     XOR = "xor"
-
 
 @dataclass
 class Metadata:

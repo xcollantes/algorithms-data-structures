@@ -22,3 +22,15 @@ def min_cost(cost: list[int]) -> int:
             steps[idx] = steps[idx - 2] + cost[idx - 2]
 
     return steps[-1]
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.ARRAY],
+    difficulty=Difficulty.EASY,
+)

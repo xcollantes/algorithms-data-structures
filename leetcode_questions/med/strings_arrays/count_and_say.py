@@ -51,3 +51,15 @@ def countAndSay(n: int) -> str:
     print(f"current_rle: {current_rle}; prev {prev_rle}; count: {count};")
 
     return current_rle
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING, Tags.RECURSION],
+    difficulty=Difficulty.MEDIUM,
+)

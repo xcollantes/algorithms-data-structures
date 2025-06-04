@@ -43,7 +43,7 @@ def occurrences(s: str, max_letters: int, min_size: int, max_size: int) -> int:
         print(f"i: {i}; s: {s}; min: {min_size};")
 
         #
-        segment = s[i: i + min_size]
+        segment = s[i : i + min_size]
 
         print(f"    segment: {segment}")
 
@@ -51,8 +51,22 @@ def occurrences(s: str, max_letters: int, min_size: int, max_size: int) -> int:
         # must be less than or equal to maxLetters.
         if len(set(segment)) <= max_letters:
 
-            print(f"    len(segment): {len(segment)} <= max_letters: {max_letters}; str_count: {str_count}")
+            print(
+                f"    len(segment): {len(segment)} <= max_letters: {max_letters}; str_count: {str_count}"
+            )
 
             str_count[segment] = str_count.get(segment, 0) + 1
 
     return max(str_count.values(), default=0)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING, Tags.SLIDING_WINDOW],
+    difficulty=Difficulty.MEDIUM,
+)

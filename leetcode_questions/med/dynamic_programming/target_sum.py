@@ -98,3 +98,15 @@ def target_sum(nums: list[int], target: int) -> int:
         return d[key]
 
     return dfs(0, 0)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.ARRAY, Tags.DFS],
+    difficulty=Difficulty.MEDIUM,
+)

@@ -26,3 +26,15 @@ def most_common_word(paragraph: str, banned: list[str]) -> str:
 
     # Return lowercase.
     return max(wc, key=lambda x: wc[x])
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HASH_TABLE, Tags.STRING, Tags.COUNTING],
+    difficulty=Difficulty.EASY,
+)

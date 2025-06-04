@@ -129,7 +129,7 @@ def int_to_roman(num: int) -> str:
         rem = num % v
 
         # Remove converted part from the number still to calculate.
-        
+
         # num = num - (div * v)  # Same logic.
         num = rem
 
@@ -138,3 +138,15 @@ def int_to_roman(num: int) -> str:
         print(f"k {k} v {v} div {div} rem {rem}: num {num}")
 
     return "".join(r)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HASH_TABLE, Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

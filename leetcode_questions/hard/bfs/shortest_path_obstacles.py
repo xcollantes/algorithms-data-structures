@@ -62,3 +62,15 @@ def p(grid) -> None:
     print("========")
     for r in grid:
         print(r)
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.BFS, Tags.MATRIX, Tags.GRAPH],
+    difficulty=Difficulty.HARD,
+)

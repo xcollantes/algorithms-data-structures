@@ -26,3 +26,15 @@ def count_balloons(text: str) -> int:
     # Return the minimum since that will be the lowest number of complete
     # letters to make the word
     return min(word.values())
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HASH_TABLE, Tags.STRING, Tags.COUNTING],
+    difficulty=Difficulty.EASY,
+)

@@ -62,3 +62,15 @@ def add_binary(a: str, b: str) -> str:
         result = "1" + result
 
     return result
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.STRING, Tags.MATH, Tags.BIT_MANIPULATION, Tags.BINARY],
+    difficulty=Difficulty.EASY,
+)

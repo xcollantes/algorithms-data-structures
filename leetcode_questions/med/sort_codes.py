@@ -23,3 +23,15 @@ def custom_sort(code: str, precedence: str) -> str:
 
 def sort_productcodes(codes: list[str], precedence: str) -> list[str]:
     return sorted(codes, key=lambda c: custom_sort(c, precedence))
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.SORTING, Tags.STRING],
+    difficulty=Difficulty.MEDIUM,
+)

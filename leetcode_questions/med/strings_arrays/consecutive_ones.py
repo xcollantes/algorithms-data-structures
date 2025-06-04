@@ -20,3 +20,15 @@ def ones(nums: list[int], k: int):
             left += 1
 
     return right - left + 1  # Plus 1 since right is not inclusive.
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.ARRAY, Tags.SLIDING_WINDOW],
+    difficulty=Difficulty.MEDIUM,
+)

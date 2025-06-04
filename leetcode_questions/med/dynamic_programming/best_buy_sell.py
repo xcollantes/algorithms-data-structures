@@ -27,3 +27,15 @@ def max_profit(prices: list[int], fee: int) -> int:
             min_price = price + fee
 
     return max_profit
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.DYNAMIC_PROGRAMMING, Tags.ARRAY],
+    difficulty=Difficulty.MEDIUM,
+)

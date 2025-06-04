@@ -109,3 +109,15 @@ def min_substring(s: str, target: str) -> str:
     if min_window[1] > len(s):
         return ""
     return s[min_window[0] : min_window[1] + 1]
+
+
+from leetcode_questions.utils.models.leetcode_data_models import (
+    Difficulty,
+    Metadata,
+    Tags,
+)
+
+__metadata__ = Metadata(
+    tags=[Tags.HASH_TABLE, Tags.STRING, Tags.SLIDING_WINDOW],
+    difficulty=Difficulty.HARD,
+)
