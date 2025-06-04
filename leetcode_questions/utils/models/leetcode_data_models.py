@@ -19,6 +19,7 @@ class Tags(Enum):
     BINARY_SEARCH_TREE = "binary search tree"
     BINARY_TREE = "binary tree"
     BIT_MANIPULATION = "bit manipulation"
+    CALCULATOR = "calculator"
     COUNTING = "counting"
     DESIGN = "design"
     DFS = "dfs"
@@ -37,6 +38,7 @@ class Tags(Enum):
     QUEUE = "queue"
     RECURSION = "recursion"
     SEARCH = "search"
+    SHUFFLE = "shuffle"
     SLIDING_WINDOW = "sliding window"
     SORTING = "sorting"
     STACK = "stack"
@@ -45,8 +47,6 @@ class Tags(Enum):
     TREE = "tree"
     TWO_POINTERS = "two pointers"
     XOR = "xor"
-    CALCULATOR = "calculator"
-    SHUFFLE = "shuffle"
 
 @dataclass
 class Metadata:
