@@ -25,3 +25,4 @@ def pp(head: ListNode):
         print(f"{head.val} -> ", end="")
         head = head.next
     print("N")
+    
