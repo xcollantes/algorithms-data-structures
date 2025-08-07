@@ -72,37 +72,54 @@ def test_rover():
     assert is_valid("GGLLGG") == True
     assert is_valid("GG") == False
     assert is_valid("GL") == True
+    assert is_valid("GLGLGGLGL") == False
 
 
 def is_valid(instructions: str) -> bool:
+    """
+    Determines if a robot executing the given instructions will be bounded in a circle.
 
-    # keep track of facing direction.
-    left = 0
-    right = 1
+    The key insight: After executing the instructions once, the robot will be bounded if:
+    1. It returns to the starting position (0,0), OR
+    2. It's facing a different direction than it started (not facing North)
 
-    # coordinates on cartesian graph.
+    If condition 2 is true, executing the instructions multiple times will eventually
+    create a cycle because the robot will change direction with each iteration.
+    """
+
+    # Direction vectors: North=(0,1), East=(1,0), South=(0,-1), West=(-1,0)
+    # Start facing North (positive Y direction)
+    face = (0, 1)
+
+    # Start at origin (0, 0)
     coor = [0, 0]
 
+    # Execute each instruction once
     for c in list(instructions):
         print(c)
 
         if c == "G":
-            # only L or R will have a direction.
-            coor[0] += left
-            coor[1] += right
+            # Move forward one unit in current facing direction
+            # Add the direction vector to current position
+            coor[0] += face[0]  # Update x coordinate
+            coor[1] += face[1]  # Update y coordinate
 
         elif c == "L":
-            left = 1
-            right = 0
+            # Turn 90 degrees left (counter-clockwise)
+            # Rotation matrix for 90 degrees CCW: (x,y) -> (-y,x)
+            face = (-face[1], face[0])
 
         elif c == "R":
-            left = 0
-            right = 1
+            # Turn 90 degrees right (clockwise)
+            # Rotation matrix for 90 degrees CW: (x,y) -> (y,-x)
+            face = (face[1], -face[0])
 
-    # check if same place where started OR rover turned left at least once BUT
-    # not turned right.
-    if coor == [0, 0] or (left != 0 and right != 1):
+    # Robot is bounded if:
+    # 1. Back at starting position (will repeat exact same path), OR
+    # 2. Facing different direction (will eventually form a cycle)
+    #    - If facing East/West/South, it will take 2-4 iterations to return to start
+    if coor == [0, 0] or face != (0, 1):
         return True
 
+    # If at different position AND still facing North, robot will move infinitely
     return False
-
