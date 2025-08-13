@@ -52,3 +52,9 @@ middle of the end or where fast is located.
 So in the same way, since the tree is doubling at every level, the array is
 filled up given the formulas with the ancestors of the tree as the array fills
 up.
+
+## Important note about heap ordering
+
+When you print a heap array, the elements will **not** appear in sorted order. The heap property only guarantees that the parent is smaller (min-heap) or larger (max-heap) than its children, not that the entire array is sorted.
+
+However, when you repeatedly call `heapq.heappop()`, the elements **will** come out in sorted order. This is because each pop operation removes the minimum element and maintains the heap property for the remaining elements.

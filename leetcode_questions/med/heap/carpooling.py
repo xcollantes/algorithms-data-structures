@@ -66,6 +66,7 @@ def carpooling(trips: list[list[int]], cap: int) -> bool:
     # Process events in chronological order using heappop
     while heap:
         pos, change = heapq.heappop(heap)
+        print(f"popping from heap: pos: {pos} change: {change}")
         in_car += change
         if in_car > cap:
             return False
