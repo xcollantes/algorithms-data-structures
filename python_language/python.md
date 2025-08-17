@@ -33,8 +33,72 @@ Python 20: Zen of Python
 
 Python 257: Doc string conversions
 
-- **February 20, 1991:** Python 0.9.0, the first public release, emerges. It
+- **February 20, 1991:** Python 0.9.0, the first public release, emerges. It
   focuses on code readability and simplicity.
+
+## Number Behavior and String Conversion
+
+### int() Casting Limitations
+
+The `int()` function can actually handle negative strings correctly, but it's important to understand its behavior with different input formats.
+
+```python
+# These work correctly
+int("123")  # Returns 123
+int("-123")  # Returns -123
+int("+123")  # Returns 123
+
+# These raise ValueError
+int("12.34")  # ValueError: invalid literal for int() with base 10: '12.34'
+int("abc")  # ValueError: invalid literal for int() with base 10: 'abc'
+int("")  # ValueError: invalid literal for int() with base 10: ''
+```
+
+### isdigit() Function Limitations
+
+The `isdigit()` method only returns `True` for strings that contain only digits (0-9). It does not recognize negative signs, decimal points, or other numeric characters.
+
+```python
+# These return True
+"123".isdigit()  # True
+"456".isdigit()  # True
+
+# These return False
+"-123".isdigit()  # False (contains minus sign)
+"+123".isdigit()  # False (contains plus sign)
+"12.34".isdigit()  # False (contains decimal point)
+"abc".isdigit()  # False (contains letters)
+"".isdigit()  # False (empty string)
+"12³".isdigit()  # False (contains superscript)
+```
+
+### Alternative Methods for Number Validation
+
+For more robust number validation, consider these alternatives:
+
+```python
+# Check if string can be converted to int (handles negatives)
+def is_integer(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+# Check if string can be converted to float (handles decimals and negatives)
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+# Examples
+is_integer("-123")  # True
+is_integer("12.34")  # False
+is_number("-123")  # True
+is_number("12.34")  # True
+```
 
 ## max
 
