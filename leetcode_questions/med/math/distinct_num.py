@@ -42,26 +42,36 @@ def distinct_num(n: int) -> int:
     # For n=1: numbers 0-9 all have unique digits (10 total)
     # This covers all 1-digit numbers with unique digits
     total = 10
-    
+
     # p tracks the number of ways to form numbers of current length
     # Starting with 9 because first digit can't be 0 (for multi-digit numbers)
     p = 9
 
-    # Calculate numbers with unique digits for lengths 2, 3, ..., n
+    # For every new place that we add by iterating over it, we've already
+    # calculated the combinations of repeats for the previous places.
+    #
+    # For example, if we add a third digit, we don't need to consider the number
+    # 11, 22, or 33, so forth, because those have already been added to the
+    # total in the previous iteration.
     for i in range(2, n + 1):
+
+        print(f"i {i} total {total} p {p}")
+
         # For i-digit numbers:
         # - First digit: 9 choices (1-9, can't be 0)
         # - Second digit: 9 choices (0-9 except first digit)
         # - Third digit: 8 choices (0-9 except first two digits)
         # - ...
         # - i-th digit: (11-i) choices
-        
+
         # p currently holds ways to form (i-1)-digit numbers
         # Multiply by (11-i) to get ways to form i-digit numbers
-        total += p * (11 - i)
-        
+        total = total + (p * (11 - i))
+
         # Update p for next iteration: multiply by available choices for next position
         # (11-i) represents remaining digit choices after using (i-1) digits
-        p *= 11 - i
+        p = p * (11 - i)
+
+    print(f"answer: {total}")
 
     return total
