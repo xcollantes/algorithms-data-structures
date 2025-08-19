@@ -36,16 +36,49 @@ class ListNode:
         self.val = val
         self.next = next
 
+    def __eq__(self, other):
+        """Compare two linked lists structurally."""
+        if not isinstance(other, ListNode):
+            return False
+
+        current_self = self
+        current_other = other
+
+        while current_self and current_other:
+            if current_self.val != current_other.val:
+                return False
+            current_self = current_self.next
+            current_other = current_other.next
+
+        # Both should be None at the end for equality.
+        return current_self is None and current_other is None
+
+
+def create_linked_list(values):
+    """Helper function to create a linked list from a list of values."""
+    if not values:
+        return None
+
+    head = ListNode(values[0])
+    current = head
+    for val in values[1:]:
+        current.next = ListNode(val)
+        current = current.next
+    return head
+
 
 def test_reverse_linked_list_ii():
     """pytest reverse_linked_list_ii.py"""
     # The list is 1 -> 2 -> 3 -> 4 -> 5 and we reverse the sublist from positions 2 to 4.
     # Expected: 1 -> 4 -> 3 -> 2 -> 5.
     assert reverse_linked_list_ii(
-        ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))), 2, 4
-    ) == ListNode(1, ListNode(4, ListNode(3, ListNode(2, ListNode(5)))))
+        create_linked_list([1, 2, 3, 4, 5]), 2, 4
+    ) == create_linked_list([1, 4, 3, 2, 5])
+
     # Single element list and reversing from 1 to 1 should return the same list.
-    assert reverse_linked_list_ii(ListNode(5), 1, 1) == ListNode(5)
+    assert reverse_linked_list_ii(create_linked_list([5]), 1, 1) == create_linked_list(
+        [5]
+    )
 
 
 def reverse_linked_list_ii(head: ListNode, left: int, right: int) -> ListNode:
@@ -71,7 +104,11 @@ def reverse_linked_list_ii(head: ListNode, left: int, right: int) -> ListNode:
         n = cur.next  # Node to move to the front of the reversed portion.
         # Rewire pointers in one tuple assignment to avoid temporary breakage.
         # After this, `n` becomes the new node immediately after `prev`.
+
+        # The cur node will stay stationary while the next value moves.
         cur.next, n.next, prev.next = n.next, prev.next, n
+
+    print(cur.val)
 
     # Return the head of the updated list, skipping the dummy node.
     return temp.next
