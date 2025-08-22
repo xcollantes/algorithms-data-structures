@@ -51,23 +51,44 @@ def test_asteroids():
 
 
 def asteroids(asteroids: list[int]) -> list[int]:
+    """
+    Simulate asteroid collisions using a stack.
 
+    Algorithm:
+    - Right-moving asteroids (positive) are always added to stack
+    - Left-moving asteroids (negative) may collide with right-moving ones
+    - Collision rules: smaller explodes, equal size both explode
+    """
     stack = []
 
-    for e in asteroids:
-        print(e)
+    for a in asteroids:
 
-        while stack and e < 0:
+        # if pos
+        if a > 0:
 
-            if -e > stack[-1]:
-                stack.pop()
-                continue
+            # Right-moving asteroid, always add to stack
+            stack.append(a)
 
-            elif -e == stack[-1]:
-                stack.pop()
-            break
-
+        # if negative
         else:
-            stack.append(e)
+
+            # Left-moving asteroid, check for collisions
+            while stack and stack[-1] > 0 and stack[-1] < abs(a):
+
+                # Right-moving asteroid is smaller, it explodes
+                stack.pop()
+
+
+            if stack and stack[-1] > 0 and stack[-1] == abs(a):
+
+                # Equal size, both explode
+                stack.pop()
+
+            elif not stack or stack[-1] < 0:
+                # No collision (empty stack or both moving left)
+
+                stack.append(a)
+
+            # If stack[-1] > abs(asteroid), left-moving asteroid explodes (do nothing)
 
     return stack
