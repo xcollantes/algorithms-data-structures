@@ -34,7 +34,7 @@ def test_merge_intervals():
     assert merge_intervals([[0, 30], [5, 10], [15, 20]]) == [[0, 30]]
     assert merge_intervals([[7, 10], [2, 4]]) == [[2, 4], [7, 10]]
     assert merge_intervals([[13, 15], [1, 13]]) == [[1, 15]]
-    assert merge_intervals([[1, 4], [0, 0]]) == [[[0, 0], [1, 4]]]
+    assert merge_intervals([[1, 4], [0, 0]]) == [[0, 0], [1, 4]]
 
 
 import heapq
@@ -48,55 +48,38 @@ def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
     1    [5,   10]
     2               [15,    20]
 
-    cur = 0
+    prev = [0, 30]
+
+    5,10
     """
 
-    times = []
-    # turn to heap
+    intervals.sort(key=lambda x: x[0])
 
-    for s, e in intervals:
-
-        # 1 for if same number. use start first.
-        times.append((s, 1, "s"))
-        times.append((e, 0, "e"))
-
-    heapq.heapify(times)
-
-    stack = []
-    # if stack is empty, add popped start and cur (end) to res
+    print(intervals)
 
     res = []
 
-    while times:
+    prev = intervals[0]
+    for time in intervals[1:]:
 
-        t = heapq.heappop(times)
+        # if current start is before last end
+        if time[0] <= prev[1]:
 
-        if t[2] == "s":
+            # update the end to longer ending
+            prev[1] = max(prev[1], time[1])
 
-            if not stack:
+        else:
 
-                # case where new mark starts
-                # Check if we can extend the previous interval.
-                if res and res[-1][1] is not None and res[-1][1] >= t[0]:
-                    # Previous interval ends at or after this start, so extend it.
-                    res[-1][1] = None  # Mark as open again.
-                else:
-                    # Start a new interval.
-                    res.append([t[0], None])
+            res.append(prev)
 
-            stack.append(t)
+            # restart with new mark
+            # this would mean the current start is after the prev end time
+            prev = time
 
-        elif t[2] == "e":
+        print(f"time {time} prev {prev} res {res}")
 
-            if stack:
-                _ = stack.pop()
+    res.append(prev)
 
-                if not stack:
-                    # No more active intervals, close current interval.
-                    res[-1][1] = t[0]
+    print(f"answer {res}")
 
-        print(f"t {t} stack {stack} res {res}")
-
-    # return list of coors
-    print(res)
     return res
