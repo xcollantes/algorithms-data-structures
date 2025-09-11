@@ -42,9 +42,12 @@ grid[i][j] is '0' or '1'.
 
 import collections
 
+import pytest
+
 
 def test_num_islands():
-    """Test islands."""
+    """pytest test_num_islands.py."""
+
     assert (
         num_islands(
             [
@@ -56,6 +59,7 @@ def test_num_islands():
         )
         == 1
     )
+
     assert (
         num_islands(
             [
@@ -66,6 +70,18 @@ def test_num_islands():
             ]
         )
         == 3
+    )
+
+    assert (
+        num_islands(
+            [
+                ["0", "0", "0", "1", "1"],
+                ["0", "0", "0", "1", "1"],
+                ["1", "0", "0", "1", "1"],
+                ["0", "0", "0", "1", "1"],
+            ]
+        )
+        == 2
     )
 
 
