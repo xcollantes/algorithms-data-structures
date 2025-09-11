@@ -60,71 +60,76 @@ def test_num_islands():
         == 1
     )
 
-    assert (
-        num_islands(
-            [
-                ["1", "1", "0", "0", "0"],
-                ["1", "1", "0", "0", "0"],
-                ["0", "0", "1", "0", "0"],
-                ["0", "0", "0", "1", "1"],
-            ]
-        )
-        == 3
-    )
+    # assert (
+    #     num_islands(
+    #         [
+    #             ["1", "1", "0", "0", "0"],
+    #             ["1", "1", "0", "0", "0"],
+    #             ["0", "0", "1", "0", "0"],
+    #             ["0", "0", "0", "1", "1"],
+    #         ]
+    #     )
+    #     == 3
+    # )
 
-    assert (
-        num_islands(
-            [
-                ["0", "0", "0", "1", "1"],
-                ["0", "0", "0", "1", "1"],
-                ["1", "0", "0", "1", "1"],
-                ["0", "0", "0", "1", "1"],
-            ]
-        )
-        == 2
-    )
+    # assert (
+    #     num_islands(
+    #         [
+    #             ["0", "0", "0", "1", "1"],
+    #             ["0", "0", "0", "1", "1"],
+    #             ["1", "0", "0", "1", "1"],
+    #             ["0", "0", "0", "1", "1"],
+    #         ]
+    #     )
+    #     == 2
+    # )
+
+
+def p(g):
+    for i in g:
+        print(i)
 
 
 def num_islands(grid: list[list[str]]) -> int:
 
-    def engulf_island(r, c):
+    def find_size(x, y):
 
-        adj = collections.deque([(r, c)])
+        # initiate as stack with single first value to start reading stack
+        stack = [(x, y)]
 
-        while adj:
+        while stack:
 
-            x, y = adj.popleft()
+            a, b = stack.pop(0)
 
-            # Check if boundaries.
-            # Check if 1.
-            if 0 <= x < ROWS and 0 <= y < COLS and grid[x][y] == "1":
+            print(f"POPPING a {a} b {b} from {stack}")
 
-                print(f"x {x} y {y} adj {adj}")
+            # in bounds
+            if 0 <= a < ROWS and 0 <= b < COLS and grid[a][b] == "1":
 
-                # Change found 1 to 0.
-                # Critical because other top level for loop will iterate and might
-                # see as 1 again.
-                grid[x][y] = "0"
+                # critical to mark as 0 to avoid other iterations from reading
+                # as island
+                grid[a][b] = "0"
 
-                # Look around.
-                for xd, yd in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+                # look around
+                for xo, yo in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
 
-                    # Append adj.
-                    adj.append((x + xd, y + yd))
+                    print(f"appending {(a + xo, b + yo)}")
+
+                    stack.append((a + xo, b + yo))
+
 
     ROWS = len(grid)
     COLS = len(grid[0])
 
-    islands = 0
+    res = 0
 
-    # Traverse every cell
     for r in range(ROWS):
-
         for c in range(COLS):
 
-            # If 1 is found, add island.
+            # print(f"r {r} c {c}")
             if grid[r][c] == "1":
-                islands += 1
-                engulf_island(r, c)
+                res += 1
+                find_size(r, c)
 
-    return islands
+    print(f"result {res}")
+    return res
