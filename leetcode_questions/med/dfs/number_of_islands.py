@@ -43,10 +43,10 @@ grid[i][j] is '0' or '1'.
 import collections
 
 
-def test_islands():
+def test_num_islands():
     """Test islands."""
     assert (
-        numIslands(
+        num_islands(
             [
                 ["1", "1", "1", "1", "0"],
                 ["1", "1", "0", "1", "0"],
@@ -57,7 +57,7 @@ def test_islands():
         == 1
     )
     assert (
-        numIslands(
+        num_islands(
             [
                 ["1", "1", "0", "0", "0"],
                 ["1", "1", "0", "0", "0"],
@@ -69,7 +69,7 @@ def test_islands():
     )
 
 
-def numIslands(grid: list[list[str]]) -> int:
+def num_islands(grid: list[list[str]]) -> int:
 
     def engulf_island(r, c):
 
