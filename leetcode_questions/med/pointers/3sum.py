@@ -104,6 +104,8 @@ def _3sum(nums: list[int]) -> list[list[int]]:
                 # match
                 res.append([nums[i], nums[l], nums[r]])
 
+                # since the array is sorted, identical values will be adjacent
+
                 l += 1
                 while nums[l] == nums[l - 1] and l < r:
                     l += 1
