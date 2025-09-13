@@ -165,9 +165,9 @@ def min_languages(
         # Count how many users in the 'need' set don't already know language l
         for i in need:
 
-            if lang in know[i]:
+            if lang not in know[i]:
 
-                print(f"user {i} knows language {lang}")
+                print(f"user {i} does not know language {lang}")
 
                 # If the user does not know language l, increment the count by
                 # 1. This count represents the number of users who would need to
