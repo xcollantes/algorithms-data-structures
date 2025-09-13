@@ -150,19 +150,24 @@ def min_languages(
     if not need:
         return 0
 
+    print(f"need: {need}")
+    print(f"know: {know}")
+
     # For each possible language (1 to n), calculate how many users in 'need'
     # would need to be taught that specific language
     res = float("inf")
-    for l in range(1, n + 1):
+    for lang in range(1, n + 1):
 
-        print(f"language: {l}")
+        print(f"language: {lang}")
 
         count = 0
 
         # Count how many users in the 'need' set don't already know language l
         for i in need:
 
-            if l in know[i]:
+            if lang in know[i]:
+
+                print(f"user {i} knows language {lang}")
 
                 # If the user does not know language l, increment the count by
                 # 1. This count represents the number of users who would need to
@@ -170,6 +175,8 @@ def min_languages(
                 count += 1
 
         # Keep track of the minimum count across all languages
+
+        print(f"count: {count}")
         res = min(res, count)
 
     # Return the minimum number of users that need to be taught any single language
