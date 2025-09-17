@@ -58,12 +58,19 @@ def excel(columnNumber: int) -> str:
     a = 0
 
     cell = ""
-    iters = columnNumber // 26
 
-    for i in range(columnNumber):
+    while columnNumber > 0:
 
-        cell = alpha[i % 26]
+        # Fix key to 0-index.
+        columnNumber -= 1
 
-        print(f"{alpha[:iters]}{cell} -> {i}")
+        # Add the cell to the result.
+        cell = alpha[columnNumber % 26] + cell
 
-    return f"{alpha[:iters]}{cell}"
+        # Build the next cell.
+        # right to left
+        columnNumber = columnNumber // 26
+
+        # print(f"{cell} -> {columnNumber}")
+
+    return f"{cell}"
