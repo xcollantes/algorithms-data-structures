@@ -39,4 +39,21 @@ def test_repeat_substring():
 
 
 def repeat_substring(s: str) -> bool:
-    """"""
+    """
+    Solution is O(n) time.
+
+    Optimal way is to check for the overlapping pattern of the string and check
+    if the original string is in the overlapping pattern.
+
+    The first and last character are removed because they would be the redundant
+    characters in the overlapping pattern.
+    """
+
+    print(f"s {s}")
+
+    combined = s + s
+
+    print(f"(s + s) {combined}")
+    print(f"index: {combined[1 : -1]}")
+
+    return s in combined[1:-1]
