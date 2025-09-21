@@ -54,9 +54,9 @@ def guess(num: int, pick: int) -> int:
     if num == pick:
         return 0
     elif num > pick:
-        return 1
-    else:
         return -1
+    elif num < pick:
+        return 1
 
 
 def test_guess_num():
@@ -67,4 +67,31 @@ def test_guess_num():
 
 
 def guess_num(n: int, pick: int) -> int:
-    """"""
+    """
+    0 1 2 3 4 5 6 7 8 9 10
+                p
+              m
+    l
+                         r
+
+    """
+    l = 0
+    r = n
+    mid = 0
+
+    while l <= r:
+
+        mid = (l + r) // 2
+
+        g = guess(mid, pick)
+
+        print(f"l {l} r {r} g: {g} mid: {mid} pick: {pick}")
+
+        if g == 0:
+            return pick
+
+        elif g == -1:
+            r = mid - 1
+
+        elif g == 1:
+            l = mid + 1
