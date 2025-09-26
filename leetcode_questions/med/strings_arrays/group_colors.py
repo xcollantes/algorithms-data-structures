@@ -36,13 +36,54 @@ Follow up: Could you come up with a one-pass algorithm using only constant extra
 
 def test_group_colors_simple():
     """pytest group_colors.py"""
-    assert group_colors([2, 0, 2, 1, 1, 0]) == [0, 0, 1, 1, 2, 2]
+    nums = [2, 0, 2, 1, 1, 0]
+    group_colors(nums)
+    assert nums == [0, 0, 1, 1, 2, 2]
 
 
 def test_group_colors():
     """pytest group_colors.py"""
-    assert group_colors([2, 0, 1]) == [0, 1, 2]
+    nums = [2, 0, 1]
+    group_colors(nums)
+    assert nums == [0, 1, 2]
 
 
 def group_colors(nums: list[int]) -> list[int]:
-    """"""
+    """
+    [0, 0, 1, 1, 2, 2]
+           r
+           w
+                 b
+    """
+
+    r = 0
+    w = 0
+    b = len(nums) - 1
+
+    while w <= b:
+
+        # print(f"r: {r} w: {w} b: {b}")
+        print()
+        for e in nums:
+            print(e, end="")
+        print()
+        print((" " * r) + "r")
+        print((" " * w) + "w")
+        print((" " * b) + "b")
+
+        # match red
+        if nums[w] == 0:
+
+            nums[w], nums[r] = nums[r], nums[w]
+
+            r += 1
+            w += 1
+
+        # match white
+        elif nums[w] == 1:
+            w += 1
+
+        # match blue
+        else:
+            nums[w], nums[b] = nums[b], nums[w]
+            b -= 1
