@@ -51,7 +51,7 @@ def test_group_colors():
 def group_colors(nums: list[int]) -> list[int]:
     """
     [0, 0, 1, 1, 2, 2]
-           r
+           radians(x)
            w
                  b
     """
