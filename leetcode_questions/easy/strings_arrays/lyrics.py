@@ -15,12 +15,14 @@ plays
 under the
 moon
 
-Core Requirements: • The cover solution should begin with the first matching
-word and end with the last matching word from the available lyrics • All words
-in between should be included in the solution • Words should be kept whole, ie a
-word should not be split between two lines • Only alpha-numeric characters
-should be present in the solution • The existing unit test
-test_creative_song_lyrics should pass unaltered
+Core Requirements:
+
+• The cover solution should begin with the first matching word and end with the
+  last matching word from the available lyrics
+• All words in between should be included in the solution
+• Words should be kept whole, ie a word should not be split between two lines
+• Only alpha-numeric characters should be present in the solution
+• The existing unit test test_creative_song_lyrics should pass unaltered
 """
 
 
