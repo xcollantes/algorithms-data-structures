@@ -27,49 +27,91 @@ test_creative_song_lyrics should pass unaltered
 def test_lyrics():
     """pytest lyrics.py"""
     assert (
-        lyrics(lyrics="plays under the moon", band_name="sun")
-        == "plays\nunder the\nmoon "
+        lyrics(lyrics="plays under the moon dog", band_name="sun")
+        == "plays\nunder\nthe moon dog"
     )
 
 
 def lyrics(lyrics, band_name):
     """
-    "plays under the moon"
-                 w
+    "hello plays under the moon dog"
+                            w
 
     "sun"
-      c
+       c
 
-    curstr =
+    line = hello plays
+    line = under
+    line = the moon
+
+
     res =
-        plays
-        under the
-        moon
-    """
-    lyrics = lyrics.split(" ")
+        hello plays
+        under
 
-    res = ""
+    """
 
     c = 0
-    w = 0
+    line = []
+    res = []
 
-    while c < len(band_name) and w < len(lyrics):
+    for word in lyrics.split(" "):
 
-        print(f"c: {band_name[c]} w: {lyrics[w]}")
+        print(f"word: {word}")
 
-        if band_name[c] in lyrics[w]:
-            res += "\n"
-            c += 1
+        # add rest
+        if c == len(band_name):
+            print(f"    append ending: {word}")
+            res[-1] += " " + word  # add to last element
 
-        res += lyrics[w]
+        else:
 
-        w += 1
+            line.append(word)
+
+            if band_name[c] in word:
+
+                # add to line
+
+                res.append(" ".join(line))
+
+                # reset line
+                line = []
+
+                # push to res
+                c += 1
+
+        print(f"    {res}")
 
     print(f"res: {res}")
+    res = "\n".join(res)
     return res
 
+    # lyrics = lyrics.split(" ")
 
+    # lines = []
+    # curline = ""
 
+    # c = 0
+
+    # for word in range(lyrics):
+
+    #     print(f"c: {band_name[c]} w: {word}")
+
+    #     if band_name[c] in word:
+
+    #         # flush cache
+    #         lines.append(curline)
+    #         curline = ""
+
+    #         c += 1
+    #     else:
+    #         curline +=
+
+    #         res += word
+
+    # res = "\n".join(lines)
+    # print(f"res: {res}")
+    # return res
 
 
 # def lyrics(lyrics, band_name):
