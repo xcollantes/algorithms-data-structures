@@ -28,7 +28,7 @@ def test_lyrics():
     """pytest lyrics.py"""
     assert (
         lyrics(lyrics="plays under the moon", band_name="sun")
-        == "plays \nunder the \nmoon "
+        == "plays\nunder the\nmoon "
     )
 
 
@@ -58,13 +58,70 @@ def lyrics(lyrics, band_name):
         print(f"c: {band_name[c]} w: {lyrics[w]}")
 
         if band_name[c] in lyrics[w]:
-            if res:
-                res += "\n"
+            res += "\n"
             c += 1
 
-        res += lyrics[w] + " "
+        res += lyrics[w]
 
         w += 1
 
     print(f"res: {res}")
     return res
+
+
+
+
+
+# def lyrics(lyrics, band_name):
+#     """
+#     Creates an album cover by aligning lyrics horizontally with band name running vertically.
+#     Each line of the result contains a word from the lyrics that has a letter from the band name.
+
+#     Args:
+#         lyrics: String containing song lyrics
+#         band_name: String containing the band name
+
+#     Returns:
+#         String with formatted lyrics for the album cover
+#     """
+#     # Parse the input
+#     words = lyrics.split()
+
+#     # Find words that contain each character of the band name
+#     matching_indices = []
+#     band_idx = 0
+
+#     # For each character in the band name, find the first word that contains it
+#     for i, word in enumerate(words):
+#         if band_idx < len(band_name) and band_name[band_idx] in word:
+#             matching_indices.append(i)
+#             band_idx += 1
+
+#             # If we've matched all characters in the band name, we're done
+#             if band_idx >= len(band_name):
+#                 break
+
+#     # If we didn't match all characters, return empty string
+#     if band_idx < len(band_name):
+#         return ""
+
+#     # Build the result
+#     result = []
+#     start_idx = matching_indices[0]
+#     end_idx = matching_indices[-1]
+
+#     # For each matching index, create a line that includes all words up to the next matching index
+#     for i in range(len(matching_indices)):
+#         current_idx = matching_indices[i]
+
+#         # Determine the end of this line
+#         next_idx = matching_indices[i + 1] if i + 1 < len(matching_indices) else end_idx + 1
+
+#         # Build the line
+#         line = " ".join(words[current_idx:next_idx]) + " "
+#         result.append(line)
+
+#     # Join the lines with newlines
+#     res = "\n".join(result)
+#     print(res)
+#     return res
