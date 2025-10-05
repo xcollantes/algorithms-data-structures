@@ -59,19 +59,24 @@ from collections import deque
 
 def word_break(s: str, word_list: list[str]) -> bool:
     """
-    "applepenapple"
-     0123456789123
-     a
-     ap
-     app
-     appl
-     apple
+    catsandog
+    0123456789123
+    c
+    ca
+    cat add 2 to queue
+    cats add 3 to queue
+    catsa
+    catsan
+    catsand
+    catsando
+    catsandog
+    pop 2
+    
 
+    ["cats", "dog", "sand", "and", "cat"]
 
-    ["apple", "pen"]
+    queue = 2 3
 
-    queue = 0
-            4 7
     visited =
     """
 
@@ -104,6 +109,6 @@ def word_break(s: str, word_list: list[str]) -> bool:
                     if end == len(s):  # Reached the end so we've found all
                         return True
 
-            visited.add(start)
+            visited.add(end)
 
     return False
