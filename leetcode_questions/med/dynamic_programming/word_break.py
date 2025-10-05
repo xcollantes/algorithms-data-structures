@@ -54,31 +54,27 @@ def test_word_break():
     )
 
 
+from collections import deque
+
+
 def word_break(s: str, word_list: list[str]) -> bool:
 
-    ssize = len(s)
-    dp = [False] * (ssize + 1)
+    visited = set()
 
-    dp[0] = True
+    queue = deque([0])
 
-    print(word_list)
+    while queue:
+        start = queue.popleft()
 
-    maxlen = max(map(len, word_list))
-    print(maxlen)
+        if start not in visited:
 
-    for i in range(1, ssize + 1):
+            for end in range(start + 1, len(s) + 1):
+                if s[start:end] in word_list:
+                    queue.append(end)
 
-        print(f"i: {i}")
+                    if end == len(s):
+                        return True
 
-        for x in range(i - 1, max(i - maxlen - 1, -1), -1):
+            visited.add(start)
 
-            print(f"    x: {x}")
-
-            if dp[x] and s[x:i] in word_list:
-
-                dp[i] = True
-                break
-
-            print(f"    {dp}")
-
-    return dp[ssize]
+    return False
