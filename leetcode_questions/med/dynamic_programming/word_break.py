@@ -42,37 +42,66 @@ All the strings of word_dict are unique.
 
 def test_word_break_simple():
     """pytest word_break.py"""
-    assert word_break(s="leetcode", word_list=["leet", "code"]) == True
-
-
-def test_word_break():
-    """pytest word_break.py"""
-    assert word_break(s="applepenapple", word_list=["apple", "pen"]) == True
     assert (
         word_break(s="catsandog", word_list=["cats", "dog", "sand", "and", "cat"])
         == False
     )
 
 
+def test_word_break():
+    """pytest word_break.py"""
+    assert word_break(s="leetcode", word_list=["leet", "code"]) == True
+    assert word_break(s="applepenapple", word_list=["apple", "pen"]) == True
+
+
 from collections import deque
 
 
 def word_break(s: str, word_list: list[str]) -> bool:
+    """
+    "applepenapple"
+     0123456789123
+     a
+     ap
+     app
+     appl
+     apple
+
+
+    ["apple", "pen"]
+
+    queue = 0
+            4 7
+    visited =
+    """
+
+    # DFS solution
 
     visited = set()
 
-    queue = deque([0])
+    idx_queue = deque([0])  # keeps track of
 
-    while queue:
-        start = queue.popleft()
+    while idx_queue:
+
+        # pull next index from queue
+        start = idx_queue.popleft()
+
+        print(f"    {start} not in {visited}")
 
         if start not in visited:
 
             for end in range(start + 1, len(s) + 1):
-                if s[start:end] in word_list:
-                    queue.append(end)
 
-                    if end == len(s):
+                print(f"    checking: {s[start:end]}; index: {start} to {end}")
+
+                if s[start:end] in word_list:  # Found a valid word
+                    print(f"    found {s[start:end]} in word_list")
+
+                    idx_queue.append(end)  # Add end for exploration
+
+                    print(f"    adding to {idx_queue}")
+
+                    if end == len(s):  # Reached the end so we've found all
                         return True
 
             visited.add(start)
