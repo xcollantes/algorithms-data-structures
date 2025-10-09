@@ -1,37 +1,84 @@
-"""Example problem:
+"""
+# **Problem: Album Cover Acrostic Generator**
 
-Assume for a moment that we're a part of a record company and the marketing
-department has an idea for a new album cover. They want to mix a subset of the
-lyrics from a song with the band name to create an interesting cover.
-Specifically, the lyrics should be aligned horizontally with the band name
-running vertically.
+## **Scenario**
 
-For example, if the values for part of the song and band are below: song_lyrics
-= '...plays under the moon...' band_name = 'sun'
+You work at a record company where the marketing department wants you to
+generate album covers from song lyrics and band names.  The song lyrics should
+be aligned **horizontally**, while the band name runs **vertically** as an
+**acrostic**.
 
-A possible result for a cover would be:
+Your goal is to extract the portion of the lyrics that includes all words
+between the first and last letters of the band name found within the lyrics.
 
+## **Example**
+
+### **Input**
+
+``` song_lyrics = "...plays under the moon..." band_name = "sun" ```
+
+### **Output**
+
+```
 plays
-under the
-moon
+    under the
+ moon
+```
 
-Core Requirements:
+### **Explanation**
 
-• The cover solution should begin with the first matching word and end with the
-  last matching word from the available lyrics
-• All words in between should be included in the solution
-• Words should be kept whole, ie a word should not be split between two lines
-• Only alpha-numeric characters should be present in the solution
-• The existing unit test test_creative_song_lyrics should pass unaltered
+* The vertical alignment of the letters **S**, **U**, and **N** in **“sun”**
+  corresponds to words in the lyrics.
+* The words between the first and last matching letters are included without
+  breaking any words.
+* The lyrics are formatted so that each subsequent letter of the band name
+  aligns vertically.
+
+## **Requirements**
+
+1. The cover solution should **begin with the first matching word** and **end
+   with the last matching word** from the available lyrics.
+2. All words **in between** must be included in the solution.
+3. Words must remain **whole** (no word splitting across lines).
+4. Only **alphanumeric characters** should be present in the final output.
+5. The existing unit test `test_creative_song_lyrics` must pass without
+   modification.
+
+## **Guidelines**
+
+* You may add code in any of the following files:
+
+  * `main.py`
+  * `helper.py`
+  * `test.py`
+* Include **in-line documentation and comments** as if you were collaborating on
+  a team project.
+* Consider how **different inputs and outputs** might affect your code.
+* Think carefully about **edge cases**, such as missing letters or special
+  characters in lyrics.
+
+
+## **Constraints**
+
+* The `song_lyrics` string may contain punctuation and spaces.
+* The `band_name` will contain only alphabetic characters.
+* Case sensitivity should be ignored (e.g., “Sun” and “sun” are equivalent).
+* The output must preserve the **horizontal alignment** of lyrics and the
+  **vertical alignment** of the band name.
+
+Would you like me to add a **Python function signature and starter code** (like
+a LeetCode boilerplate with `def generate_album_cover(song_lyrics,
+band_name):`)?
 """
 
 
 def test_lyrics():
     """pytest lyrics.py"""
-    assert (
-        lyrics(lyrics="plays under the moon dog", band_name="sun")
-        == "plays\nunder\nthe moon dog"
-    )
+    assert lyrics(lyrics="plays under the moon", band_name="sun") == [
+        "plays",
+        "under the",
+        "moon",
+    ]
 
 
 def lyrics(lyrics, band_name):
@@ -42,14 +89,11 @@ def lyrics(lyrics, band_name):
     "sun"
        c
 
-    line = hello plays
-    line = under
-    line = the moon
+    line = hello plays line = under line = the moon
 
 
     res =
-        hello plays
-        under
+        hello plays under
 
     """
 
@@ -87,85 +131,3 @@ def lyrics(lyrics, band_name):
     print(f"res: {res}")
     res = "\n".join(res)
     return res
-
-    # lyrics = lyrics.split(" ")
-
-    # lines = []
-    # curline = ""
-
-    # c = 0
-
-    # for word in range(lyrics):
-
-    #     print(f"c: {band_name[c]} w: {word}")
-
-    #     if band_name[c] in word:
-
-    #         # flush cache
-    #         lines.append(curline)
-    #         curline = ""
-
-    #         c += 1
-    #     else:
-    #         curline +=
-
-    #         res += word
-
-    # res = "\n".join(lines)
-    # print(f"res: {res}")
-    # return res
-
-
-# def lyrics(lyrics, band_name):
-#     """
-#     Creates an album cover by aligning lyrics horizontally with band name running vertically.
-#     Each line of the result contains a word from the lyrics that has a letter from the band name.
-
-#     Args:
-#         lyrics: String containing song lyrics
-#         band_name: String containing the band name
-
-#     Returns:
-#         String with formatted lyrics for the album cover
-#     """
-#     # Parse the input
-#     words = lyrics.split()
-
-#     # Find words that contain each character of the band name
-#     matching_indices = []
-#     band_idx = 0
-
-#     # For each character in the band name, find the first word that contains it
-#     for i, word in enumerate(words):
-#         if band_idx < len(band_name) and band_name[band_idx] in word:
-#             matching_indices.append(i)
-#             band_idx += 1
-
-#             # If we've matched all characters in the band name, we're done
-#             if band_idx >= len(band_name):
-#                 break
-
-#     # If we didn't match all characters, return empty string
-#     if band_idx < len(band_name):
-#         return ""
-
-#     # Build the result
-#     result = []
-#     start_idx = matching_indices[0]
-#     end_idx = matching_indices[-1]
-
-#     # For each matching index, create a line that includes all words up to the next matching index
-#     for i in range(len(matching_indices)):
-#         current_idx = matching_indices[i]
-
-#         # Determine the end of this line
-#         next_idx = matching_indices[i + 1] if i + 1 < len(matching_indices) else end_idx + 1
-
-#         # Build the line
-#         line = " ".join(words[current_idx:next_idx]) + " "
-#         result.append(line)
-
-#     # Join the lines with newlines
-#     res = "\n".join(result)
-#     print(res)
-#     return res
