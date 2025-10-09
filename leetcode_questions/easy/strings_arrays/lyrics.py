@@ -76,58 +76,68 @@ def test_lyrics():
     """pytest lyrics.py"""
     assert lyrics(lyrics="plays under the moon", band_name="sun") == [
         "plays",
-        "under the",
-        "moon",
+        "    under the",
+        " moon",
     ]
 
 
-def lyrics(lyrics, band_name):
+def lyrics(lyrics: str, band_name: str) -> list[str]:
     """
-    "hello plays under the moon dog"
-                            w
+    "...plays under the moon..."
+          w
 
     "sun"
-       c
+     c
 
-    line = hello plays line = under line = the moon
-
+    line = plays
+    line =
 
     res =
-        hello plays under
-
+        plays
     """
 
-    c = 0
-    line = []
     res = []
 
-    for word in lyrics.split(" "):
+    # clean
+    lyrics = lyrics.replace(".", "").split(" ")
 
-        print(f"word: {word}")
+    line = []
+    b = 0
 
-        # add rest
-        if c == len(band_name):
-            print(f"    append ending: {word}")
-            res[-1] += " " + word  # add to last element
+    target_idx = {}
 
-        else:
+    # get list of lines
 
-            line.append(word)
+    for word in lyrics:
 
-            if band_name[c] in word:
+        print(f"looking for {band_name[b]} in {word}")
 
-                # add to line
+        if band_name[b] in word:
 
-                res.append(" ".join(line))
+            print(f"found: line: {line}")
 
-                # reset line
-                line = []
+            if line or len():
+                add_newline = " ".join(line)
+                target_idx[add_newline] = add_newline.index(band_name[b])
 
-                # push to res
-                c += 1
+                line = []  # reset
 
-        print(f"    {res}")
+            print(f"    adding {word}")
+            b += 1
 
-    print(f"res: {res}")
-    res = "\n".join(res)
+        line.append(word)
+
+        print(f"after line: {line}")
+
+    # add remaining words
+    add_newline = " ".join(line)
+    print(f"last line: {add_newline}")
+    target_idx[add_newline] = add_newline.index(band_name[b - 1])
+
+    print(f"target_idx: {target_idx}")
+
+    # add shifts
+
+    # get matching indices
+
     return res
