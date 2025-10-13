@@ -37,3 +37,27 @@ def test_valid_triangle():
 
 def valid_triangle(nums: list[int]) -> int:
     """"""
+    nums.sort()
+
+    total = 0
+
+    for longest in range(len(nums) - 1, 1, -1):
+
+        print(f"l {l} r {r} ")
+
+        l = 0
+        r = longest - 1
+
+        while l < r:
+
+            print(f"    {nums[l]} + {nums[r]} = {nums[l] + nums[r]} > {nums[longest]}")
+
+            if nums[l] + nums[r] > nums[longest]:
+                total += r - l
+                r -= 1
+            else:
+                l += 1
+
+    print(f"total: {total}")
+
+    return total
