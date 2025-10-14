@@ -31,7 +31,7 @@ n == matrix.length == matrix[i].length
 from re import T
 
 
-def test_rotate_matrix():
+def test_rotate_matrix_simple():
     """pytest rotate_matrix.py"""
     # Test case 1: 3x3 matrix from Example 1
     matrix1 = [
@@ -46,6 +46,8 @@ def test_rotate_matrix():
         [9, 6, 3],
     ]
 
+
+def test_rotate_matrix():
     # Test case 2: 4x4 matrix from Example 2
     matrix2 = [
         [5, 1, 9, 11],
@@ -98,26 +100,34 @@ def p(m):
 
 
 def rotate_matrix(matrix: list[list[int]]) -> list[list[int]]:
+    """"""
 
-    # Depending on the way we rotate, the order of Reverse and then transpose is
-    # important.
+    print()
 
-    # If you transpose then Reverse the cols instead of rows: 90 degree
-    # counterclockwise rotation.
+    top = 0
+    bottom = len(matrix) - 1
 
-    # Reverse matrix.
-    t = 0
-    b = len(matrix) - 1
-    while t < b:
-        matrix[t], matrix[b] = matrix[b], matrix[t]
-        t += 1
-        b -= 1
+    while top < bottom:
+        matrix[top], matrix[bottom] = matrix[bottom], matrix[top]
+        top += 1
+        bottom -= 1
 
     p(matrix)
 
-    # transpose matrix.
+    # start for each row, use the index as exlusive iterations.
+    # so for idx 0 or first row, do nothing; idx 1, perform 1 operation
+    # exclusive
     for x in range(len(matrix)):
-        for y in range(x):
-            matrix[x][y], matrix[y][x] = matrix[y][x], matrix[x][y]
 
-    p(matrix)
+        for y in range(x):
+
+            # exchange values from other side of board
+            # this is why we had to perform the reversal operation first
+
+            # this onlly works for m * n matrix and if the rows and columns are
+            # differing sizes, then you can't do in place
+
+            print(
+                f"({x}, {y}) value: {matrix[x][y]} switching: {matrix[x][y]} and {matrix[y][x]}"
+            )
+            matrix[x][y], matrix[y][x] = matrix[y][x], matrix[x][y]
